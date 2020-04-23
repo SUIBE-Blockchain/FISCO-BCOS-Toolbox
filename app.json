@@ -1,0 +1,29 @@
+{
+   "name": "fisco_bcos_sol_toolbox",
+   "env": {
+      "SECRET_KEY": {
+         "description": "SECRET_KEY.",
+         "generator": "secret"
+      },
+      "FLASK_APP": {
+         "description": "FLASK_APP.",
+         "value": "autoapp.py"
+      }
+   },
+   "buildpacks": [
+      {
+         "url": "heroku/nodejs"
+      },
+      {
+         "url": "heroku/python"
+      }
+   ],
+   "addons": [
+      {
+         "plan": "heroku-postgresql:hobby-dev",
+         "options": {
+            "version": "11"
+         }
+      }
+   ]
+}
