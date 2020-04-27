@@ -17,7 +17,7 @@ services:
       target: development
       args:
         <<: *build_args
-    image: "fisco_bcos_sol_toolbox-development"
+    image: "fisco_bcos_toolbox-development"
     ports:
       - "5000:5000"
       - "2992:2992"
@@ -29,7 +29,7 @@ services:
       target: production
       args:
         <<: *build_args
-    image: "fisco_bcos_sol_toolbox-production"
+    image: "fisco_bcos_toolbox-production"
     ports:
       - "5000:5000"
     environment:
@@ -46,7 +46,7 @@ services:
     environment:
       FLASK_ENV: production
       FLASK_DEBUG: 0
-    image: "fisco_bcos_sol_toolbox-manage"
+    image: "fisco_bcos_toolbox-manage"
     stdin_open: true
     tty: true
     <<: *default_volumes

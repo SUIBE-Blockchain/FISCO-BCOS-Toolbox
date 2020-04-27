@@ -4,7 +4,7 @@ import datetime as dt
 
 from flask_login import UserMixin
 
-from fisco_bcos_sol_toolbox.database import (
+from fisco_bcos_toolbox.database import (
     Column,
     Model,
     SurrogatePK,
@@ -12,7 +12,7 @@ from fisco_bcos_sol_toolbox.database import (
     reference_col,
     relationship,
 )
-from fisco_bcos_sol_toolbox.extensions import bcrypt
+from fisco_bcos_toolbox.extensions import bcrypt
 
 
 class Role(SurrogatePK, Model):

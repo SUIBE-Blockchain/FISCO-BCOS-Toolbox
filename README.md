@@ -43,7 +43,7 @@ A docker volume `node-modules` is created to store NPM packages and is reused ac
 Run the following commands to bootstrap your environment if you are unable to run the application using Docker
 
 ```bash
-cd fisco_bcos_sol_toolbox
+cd fisco_bcos_toolbox
 pip install -r requirements/dev.txt
 npm install
 npm start  # run the webpack dev server and flask server using concurrently
@@ -190,7 +190,7 @@ Deployment by using [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cl
 * Create Heroku App. You can leave your app name, change it, or leave it blank (random name will be generated)
 
     ```bash
-    heroku create fisco_bcos_sol_toolbox
+    heroku create fisco_bcos_toolbox
     ```
 
 * Add buildpacks

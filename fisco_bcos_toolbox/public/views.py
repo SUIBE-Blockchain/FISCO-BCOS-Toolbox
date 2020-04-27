@@ -11,11 +11,11 @@ from flask import (
 )
 from flask_login import login_required, login_user, logout_user
 
-from fisco_bcos_sol_toolbox.extensions import login_manager
-from fisco_bcos_sol_toolbox.public.forms import LoginForm
-from fisco_bcos_sol_toolbox.user.forms import RegisterForm
-from fisco_bcos_sol_toolbox.user.models import User
-from fisco_bcos_sol_toolbox.utils import flash_errors
+from fisco_bcos_toolbox.extensions import login_manager
+from fisco_bcos_toolbox.public.forms import LoginForm
+from fisco_bcos_toolbox.user.forms import RegisterForm
+from fisco_bcos_toolbox.user.models import User
+from fisco_bcos_toolbox.utils import flash_errors
 
 blueprint = Blueprint("public", __name__, static_folder="../static")
 

@@ -9,10 +9,10 @@ from flask import (
     request,
     url_for,
 )
-from fisco_bcos_sol_toolbox.extensions import csrf_protect
+from fisco_bcos_toolbox.extensions import csrf_protect
 import json
 
-from fisco_bcos_sol_toolbox.blockchain import Ethereum
+from fisco_bcos_toolbox.blockchain import Ethereum
 
 blueprint = Blueprint("blockchain_api", __name__, static_folder="../static")
 

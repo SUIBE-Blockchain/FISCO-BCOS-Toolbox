@@ -1,5 +1,5 @@
 {
-   "name": "fisco_bcos_sol_toolbox",
+   "name": "fisco_bcos_toolbox",
    "env": {
       "SECRET_KEY": {
          "description": "SECRET_KEY.",

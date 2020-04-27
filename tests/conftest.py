@@ -6,8 +6,8 @@ import logging
 import pytest
 from webtest import TestApp
 
-from fisco_bcos_sol_toolbox.app import create_app
-from fisco_bcos_sol_toolbox.database import db as _db
+from fisco_bcos_toolbox.app import create_app
+from fisco_bcos_toolbox.database import db as _db
 
 from .factories import UserFactory
 

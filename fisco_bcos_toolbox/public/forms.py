@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField
 from wtforms.validators import DataRequired
 
-from fisco_bcos_sol_toolbox.user.models import User
+from fisco_bcos_toolbox.user.models import User
 
 
 class LoginForm(FlaskForm):

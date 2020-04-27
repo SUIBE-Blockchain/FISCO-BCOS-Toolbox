@@ -1,5 +1,5 @@
 {
-  "name": "fisco_bcos_sol_toolbox",
+  "name": "fisco_bcos_toolbox",
   "version": "1.0.0",
   "description": "FISCO BCOS Sol Toolbox created by SUIBE-Blockchain-Team.",
   "scripts": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leeduckgo/fisco_bcos_sol_toolbox.git"
+    "url": "git+https://github.com/leeduckgo/fisco_bcos_toolbox.git"
   },
   "author": "SUIBE",
   "license": "MIT",
@@ -26,9 +26,9 @@
     "node": ">=12"
   },
   "bugs": {
-    "url": "https://github.com/leeduckgo/fisco_bcos_sol_toolbox/issues"
+    "url": "https://github.com/leeduckgo/fisco_bcos_toolbox/issues"
   },
-  "homepage": "https://github.com/leeduckgo/fisco_bcos_sol_toolbox#readme",
+  "homepage": "https://github.com/leeduckgo/fisco_bcos_toolbox#readme",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.9.0",
     "bootstrap": "^4.3.1",

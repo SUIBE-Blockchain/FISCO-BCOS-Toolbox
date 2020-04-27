@@ -4,7 +4,7 @@ import datetime as dt
 
 import pytest
 
-from fisco_bcos_sol_toolbox.user.models import Role, User
+from fisco_bcos_toolbox.user.models import Role, User
 
 from .factories import UserFactory
 

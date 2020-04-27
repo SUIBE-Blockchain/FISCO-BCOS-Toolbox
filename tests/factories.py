@@ -3,8 +3,8 @@
 from factory import PostGenerationMethodCall, Sequence
 from factory.alchemy import SQLAlchemyModelFactory
 
-from fisco_bcos_sol_toolbox.database import db
-from fisco_bcos_sol_toolbox.user.models import User
+from fisco_bcos_toolbox.database import db
+from fisco_bcos_toolbox.user.models import User
 
 
 class BaseFactory(SQLAlchemyModelFactory):

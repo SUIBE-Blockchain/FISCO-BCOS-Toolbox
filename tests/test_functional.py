@@ -5,7 +5,7 @@ See: http://webtest.readthedocs.org/
 """
 from flask import url_for
 
-from fisco_bcos_sol_toolbox.user.models import User
+from fisco_bcos_toolbox.user.models import User
 
 from .factories import UserFactory
 

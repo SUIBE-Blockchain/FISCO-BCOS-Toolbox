@@ -5,8 +5,8 @@ import sys
 
 from flask import Flask, render_template
 
-from fisco_bcos_sol_toolbox import commands, public, user, blockchain_api
-from fisco_bcos_sol_toolbox.extensions import (
+from fisco_bcos_toolbox import commands, public, user, blockchain_api
+from fisco_bcos_toolbox.extensions import (
     bcrypt,
     cache,
     csrf_protect,
@@ -18,7 +18,7 @@ from fisco_bcos_sol_toolbox.extensions import (
 )
 
 
-def create_app(config_object="fisco_bcos_sol_toolbox.settings"):
+def create_app(config_object="fisco_bcos_toolbox.settings"):
     """Create application factory, as explained here: http://flask.pocoo.org/docs/patterns/appfactories/.
 
     :param config_object: The configuration object to use.

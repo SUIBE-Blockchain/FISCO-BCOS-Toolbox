@@ -1,5 +1,5 @@
 /*
- * Main Javascript file for fisco_bcos_sol_toolbox.
+ * Main Javascript file for fisco_bcos_toolbox.
  *
  * This file bundles all of your javascript together using webpack.
  */
