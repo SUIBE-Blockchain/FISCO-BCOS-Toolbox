@@ -1,7 +1,7 @@
 {
   "name": "fisco_bcos_toolbox",
   "version": "1.0.0",
-  "description": "FISCO BCOS Sol Toolbox created by SUIBE-Blockchain-Team.",
+  "description": "FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.",
   "scripts": {
     "build": "run-script-os",
     "build:win32": "SET NODE_ENV=production && webpack --progress --colors -p && npm run flask-static-digest",

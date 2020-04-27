@@ -1,6 +1,6 @@
-# FISCO BCOS Sol Toolbox
+# FISCO BCOS Toolbox
 
-FISCO BCOS Sol Toolbox created by SUIBE-Blockchain-Team.
+FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.
 
 ## Docker Quickstart
 
