@@ -2,6 +2,21 @@
 
 FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.
 
+由上海对外经贸大学区块链技术与应用研究中心研发的针对 FISCO BCOS 的工具箱。
+内容包括：
+
+- FISCO BCOS 地址生成（已完成）
+- 开发中的数据模拟（构建中）
+- 智能合约案例合集（构建中）
+- SDK 功能通过WEB页面调用（构建中）
+……
+
+环境变量文件见`.envrc`。
+
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1ge8j964uioj31j10u0470.jpg)
+
+
+
 ## Docker Quickstart
 
 This app can be run completely using `Docker` and `docker-compose`. **Using Docker is recommended, as it guarantees the application is run using compatible versions of Python and Node**.
