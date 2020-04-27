@@ -51,7 +51,6 @@ def logout():
     flash("You are logged out.", "info")
     return redirect(url_for("public.home"))
 
-
 @blueprint.route("/register/", methods=["GET", "POST"])
 def register():
     """Register new user."""
@@ -61,9 +60,9 @@ def register():
             username=form.username.data,
             email=form.email.data,
             password=form.password.data,
-            active=True,
+            active=False,
         )
-        flash("Thank you for registering. You can now log in.", "success")
+        flash("感谢注册，请联系管理员激活账号！", "success")
         return redirect(url_for("public.home"))
     else:
         flash_errors(form)

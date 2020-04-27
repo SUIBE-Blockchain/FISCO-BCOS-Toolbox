@@ -1,35 +1,116 @@
 
 {% extends "layout.html" %}
 {% block content %}
+<div id="context">
+
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
     
-      <h1 class="display-3">Welcome to FISCO BCOS Sol Toolbox</h1>
+      <h4 class="display-4">欢迎访问<br>上外贸定制版 FISCO BCOS 工具箱！</h4>
     
-      <p>This is a starter Flask template. It includes Bootstrap 4, jQuery 3, Flask-SQLAlchemy, WTForms, and various testing utilities out of the box.</p>
-      <p><a href="https://github.com/cookiecutter-flask/cookiecutter-flask" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+      <p>使用图形化的方式调用 FISCO BCOS Python-SDK，除此之外还有多个FISCO BCOS 开发相关功能</p>
+      <p><a href="https://github.com/SUIBE-Blockchain/fisco_bcos_sol_toolbox" class="btn btn-primary btn-large">查看 Github 源码……</a></p>
     </div>
 </div><!-- /.jumbotron -->
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
-      <h2><i class="fa fa-code"></i> Bootstrap 4</h2>
-      <p>Sleek, intuitive, and powerful mobile-first front-end framework for faster and easier web development.</p>
-      <p><a class="btn btn-outline-secondary" href="http://getbootstrap.com/">Official website &raquo;</a></p>
+    <div class="col-lg-8">
+      <h3><i class="fa fa-angellist"></i> 生成测试用私钥与地址</h3>
+      <br>
+      <p>
+        <a class="btn btn-outline-secondary" v-on:click="get_addr()">Generate!</a>
+        <a class="btn btn-outline-secondary" v-on:click="get_addr_by_priv(priv)">Generate by Privkey!</a>
+      </p>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Privkey:</span>
+        </div>
+        <input v-model="priv" type="text" class="form-control" placeholder="Privkey" aria-label="Privkey" aria-describedby="basic-addon1">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Address:</span>
+        </div>
+        <input v-model="addr" readonly="readonly" type="text" class="form-control" placeholder="Address" aria-label="Address" aria-describedby="basic-addon1">
+      </div>
     </div>
-    <div class="col-lg-4">
-      <h2><i class="fa fa-flask"></i> SQLAlchemy</h2>
-      <p>SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.</p>
-      <p><a href="http://www.sqlalchemy.org/" class="btn btn-outline-secondary">Official website &raquo;</a></p>
-   </div>
-    <div class="col-lg-4">
-      <h2><i class="fa fa-edit"></i> WTForms</h2>
-      <p>WTForms is a flexible forms validation and rendering library for python web development.</p>
-      <p><a href="http://wtforms.simplecodes.com/" class="btn btn-outline-secondary">Official website &raquo;</a></p>
-    </div>
+    
   </div><!-- /.row -->
+  <br>
+  <div class = "row">
+    <div class="col-lg-8">
+      <h3><i class="fa fa-flask"></i> 生成 Mock Data</h3>
+      <br>
+      <p><a href="https://github.com/SUIBE-Blockchain/fisco_bcos_sol_toolbox" class="btn btn-outline-secondary">开发中…… &raquo;</a></p>
+   </div>
+  </div>
+  <br>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <h3><i class="fa fa-edit"></i> 合约案例库</h3>
+      <p>The Examples of Solidity on FISCO BCOS.</p>
+      <p><a href="https://github.com/SUIBE-Blockchain/fisco_bcos_sol_toolbox" class="btn btn-outline-secondary">开发中…… &raquo;</a></p>
+    </div>
+  </div>
 </div>
+
+</div>
+<script>
+  var context=new Vue({
+    el: "#context",
+    data: 
+    {
+      priv: "",
+      addr: ""
+    },
+    methods:
+    {
+    get_addr:function()
+      {
+        axios(
+              {
+                  method:'get',
+                  url:'http://127.0.0.1:5000/api/generate_addr',
+                  headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded',
+                  }                                
+              })
+              .then(function(response){
+                context.priv = response.data.payload.priv;
+                context.addr = response.data.payload.addr;
+              })
+              .catch(function(error){
+              })
+      },
+    get_addr_by_priv:function(priv)
+    {
+        console.log(priv)
+        axios({
+            method:'post',
+            url:'http://127.0.0.1:5000/api/generate_addr',
+            data:
+            {
+                priv: context.priv,
+            },
+            headers:
+            {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }                             
+        })
+        .then(function(response){
+          context.priv = response.data.payload.priv
+          context.addr = response.data.payload.addr
+        })
+        .catch(function(error){
+
+        })
+    }}
+
+  })
+</script>
 {% endblock %}
 

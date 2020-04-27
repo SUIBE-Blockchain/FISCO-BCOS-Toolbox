@@ -5,7 +5,7 @@ import sys
 
 from flask import Flask, render_template
 
-from fisco_bcos_sol_toolbox import commands, public, user
+from fisco_bcos_sol_toolbox import commands, public, user, blockchain_api
 from fisco_bcos_sol_toolbox.extensions import (
     bcrypt,
     cache,
@@ -51,6 +51,7 @@ def register_blueprints(app):
     """Register Flask blueprints."""
     app.register_blueprint(public.views.blueprint)
     app.register_blueprint(user.views.blueprint)
+    app.register_blueprint(blockchain_api.views.blueprint)
     return None
 
 
