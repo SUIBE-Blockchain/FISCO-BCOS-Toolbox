@@ -8,6 +8,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_static_digest import FlaskStaticDigest
 from flask_wtf.csrf import CSRFProtect
+from flask_bootstrap import Bootstrap
 
 bcrypt = Bcrypt()
 csrf_protect = CSRFProtect()
@@ -17,3 +18,14 @@ migrate = Migrate()
 cache = Cache()
 debug_toolbar = DebugToolbarExtension()
 flask_static_digest = FlaskStaticDigest()
+bootstrap = Bootstrap()
+
+@login_manager.user_loader
+def load_user(user_id):
+    if User.query.get(int(user_id)) is not None:
+        user = User.query.get(int(user_id))
+        return user
+
+login_manager.login_view = 'public.login'
+login_manager.login_message_category = 'info'
+login_manager.login_message = 'Access denied.'
