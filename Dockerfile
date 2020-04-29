@@ -26,14 +26,14 @@ RUN npm install
 
 # ================================= DEVELOPMENT ================================
 FROM base AS development
-RUN pip install --user -r requirements/dev.txt
+RUN pip install --user -r requirements/dev.txt --no-cache-dir
 EXPOSE 2992
 EXPOSE 5000
 CMD [ "npm", "start" ]
 
 # ================================= PRODUCTION =================================
 FROM base AS production
-RUN pip install --user -r requirements/prod.txt
+RUN pip install --user -r requirements/prod.txt --no-cache-dir
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 COPY supervisord_programs /etc/supervisor/conf.d
 EXPOSE 5000
@@ -42,5 +42,5 @@ CMD ["-c", "/etc/supervisor/supervisord.conf"]
 
 # =================================== MANAGE ===================================
 FROM base AS manage
-RUN pip install --user -r requirements/dev.txt
+RUN pip install --user -r requirements/dev.txt --no-cache-dir
 ENTRYPOINT [ "flask" ]
