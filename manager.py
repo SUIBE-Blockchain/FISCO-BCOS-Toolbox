@@ -58,7 +58,7 @@ def init_db():
 
 @manager.command
 def set_user(username, email, password):
-    """Building Bluelog, just for you."""
+    """Add A New User."""
     pass
 
 
