@@ -9,7 +9,6 @@ from fisco_bcos_toolbox.blueprints.public.public import public_bp
 from fisco_bcos_toolbox.blueprints.user.user import user_bp
 from fisco_bcos_toolbox.blueprints.blockchain_api.api_v1.api import api_bp
 
-
 from fisco_bcos_toolbox.extensions import (
     bcrypt,
     cache,
@@ -34,7 +33,7 @@ def create_app(config_object="fisco_bcos_toolbox.settings"):
     register_blueprints(app)
     register_errorhandlers(app)
     register_shellcontext(app)
-    register_commands(app)
+    # register_commands(app)
     configure_logger(app)
     return app
 
@@ -83,10 +82,11 @@ def register_shellcontext(app):
     app.shell_context_processor(shell_context)
 
 
-def register_commands(app):
-    """Register Click commands."""
-    app.cli.add_command(commands.test)
-    app.cli.add_command(commands.lint)
+# def register_commands(app):
+#     """Register Click commands."""
+#     # from fisco_bcos_toolbox.commands import * 
+#     app.cli.add_command(commands.test)
+#     app.cli.add_command(commands.lint)
 
 
 def configure_logger(app):
