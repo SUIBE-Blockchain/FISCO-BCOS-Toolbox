@@ -8,6 +8,14 @@ import click
 app = create_app()
 
 banner = r"""
+ ______     ________      ______       ______       ______          _______       ______       ______       ______      
+/_____/\   /_______/\    /_____/\     /_____/\     /_____/\       /_______/\     /_____/\     /_____/\     /_____/\     
+\::::_\/_  \__.::._\/    \::::_\/_    \:::__\/     \:::_ \ \      \::: _  \ \    \:::__\/     \:::_ \ \    \::::_\/_    
+ \:\/___/\    \::\ \      \:\/___/\    \:\ \  __    \:\ \ \ \      \::(_)  \/_    \:\ \  __    \:\ \ \ \    \:\/___/\   
+  \:::._\/    _\::\ \__    \_::._\:\    \:\ \/_/\    \:\ \ \ \      \::  _  \ \    \:\ \/_/\    \:\ \ \ \    \_::._\:\  
+   \:\ \     /__\::\__/\     /____\:\    \:\_\ \ \    \:\_\ \ \      \::(_)  \ \    \:\_\ \ \    \:\_\ \ \     /____\:\ 
+    \_\/     \________\/     \_____\/     \_____\/     \_____\/       \_______\/     \_____\/     \_____\/     \_____\/ 
+                
 """
 
 manager = Manager(app)
@@ -32,12 +40,13 @@ def reset_db():
     click.echo('Drop tables.')
     db.create_all()
     click.echo('Initialized database.')
-    User.create(
+    admin = User(
         username='admin',
         email='admin@admin.com',
-        password='admin',
+        is_admin=True,
         active=True,
     )
+    admin.set_password('admin')
     db.session.add(admin)
     db.session.commit()
     click.echo('Success Add Admin Count.')
@@ -46,12 +55,13 @@ def reset_db():
 def init_db():
     db.create_all()
     click.echo('Initialized database.')
-    User.create(
+    admin = User(
         username='admin',
         email='admin@admin.com',
-        password='admin',
+        is_admin=True,
         active=True,
     )
+    admin.set_password('admin')
     db.session.add(admin)
     db.session.commit()
     click.echo('Success Add Admin Count.')
