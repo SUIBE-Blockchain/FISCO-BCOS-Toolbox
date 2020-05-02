@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Database module, including the SQLAlchemy database object and DB-related utilities."""
-from .compat import basestring
-from .extensions import db
+from fisco_bcos_toolbox.compat import basestring
+from fisco_bcos_toolbox.extensions import db
 
 # Alias common SQLAlchemy names
 Column = db.Column
