@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Public forms."""
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField
-from wtforms.validators import DataRequired
+from wtforms import PasswordField, StringField, SubmitField
+from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 from fisco_bcos_toolbox.models import User
 
@@ -12,6 +12,7 @@ class LoginForm(FlaskForm):
 
     username = StringField("Username", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
+    submit = SubmitField('Login')
 
     def __init__(self, *args, **kwargs):
         """Create instance."""
@@ -54,6 +55,7 @@ class RegisterForm(FlaskForm):
         "Verify password",
         [DataRequired(), EqualTo("password", message="Passwords must match")],
     )
+    submit = SubmitField('Register')
 
     def __init__(self, *args, **kwargs):
         """Create instance."""
