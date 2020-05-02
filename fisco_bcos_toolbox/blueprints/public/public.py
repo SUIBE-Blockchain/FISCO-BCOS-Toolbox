@@ -15,6 +15,7 @@ from fisco_bcos_toolbox.extensions import login_manager
 from fisco_bcos_toolbox.forms import RegisterForm, LoginForm
 from fisco_bcos_toolbox.models import User
 from fisco_bcos_toolbox.utils import flash_errors, redirect_back
+from fisco_bcos_toolbox.extensions import db
 
 public_bp = Blueprint("public", __name__, static_folder="../static")
 
@@ -84,7 +85,7 @@ def register():
     if current_user.is_authenticated:
         return redirect(url_for('public.home'))
         
-    form = RegisterForm(request.form)
+    form = RegisterForm()
     if form.validate_on_submit():
         username = form.username.data
         email = form.email.data
@@ -111,7 +112,7 @@ def register():
             #     db.session.rollback()
             db.session.commit()
             return redirect(url_for('public.login'))
-    return render_template('public/register.html', form=form)
+    return render_template('public/register1.html', form=form)
 
 
 
