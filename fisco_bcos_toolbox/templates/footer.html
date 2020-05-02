@@ -10,5 +10,16 @@
 
       <li><a href="mailto:leeduckgo@gmail.com">Contact</a></li>
     </ul>
+    <p>
+      <small>
+          {% if current_user.is_authenticated %}
+              <a href="{{ url_for('public.logout', next=request.full_path) }}">Logout</a>
+      |        <a href="{{ url_for('public.register', next=request.full_path)}}">Register</a>
+          {% else %}
+              <a href="{{ url_for('public.login', next=request.full_path) }}">Login</a>
+      |        <a href="{{ url_for('public.register', next=request.full_path)}}">Register</a>
+          {% endif %}
+      </small>
+  </p>
   </small>
 </footer>
