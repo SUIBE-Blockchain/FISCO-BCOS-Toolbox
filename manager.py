@@ -26,6 +26,8 @@ def make_shell_context():
         "app": app,
     }
 
+def add_user(username, email, password, active=False):
+
 
 manager.add_command("runserver", Server(host="0.0.0.0", port=5000, use_debugger=False))
 manager.add_command("shell", Shell(banner=banner, make_context=make_shell_context))
@@ -67,10 +69,20 @@ def init_db():
     click.echo('Success Add Admin Count.')
 
 @manager.command
-def set_user(username, email, password):
+def set_user(username, email, password, active=True):
     """Add A New User."""
-    pass
-
+    if User.query.filter(User.username==username).first() and User.query.filter(User.email==email).first() and active:
+        user = User.query.filter(User.username==username).first()
+        user.active = True
+        click.echo('Success Update A New User to Active')
+    else:
+        user = User(username=username, email=email, active=active, id=None)
+        # add a User(active = False)
+        user.set_password(password)
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit(user)
+        click.echo("Success Add A New Active User.")
 
 if __name__ == "__main__":
     manager.run()
