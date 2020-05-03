@@ -92,15 +92,16 @@ def register():
         password = form.password.data
         password1 = form.confirm.data
         if not all([username, email, password, password1]):
-            flash('请把信息填写完整')
+            flash('请把信息填写完整', "warning")
         elif password != password1:
-            flash('两次密码不一致，请重新输入！')
+            flash('两次密码不一致，请重新输入！', "warning")
         elif User.query.filter(User.username==username).first():
-            flash('这个用户名已经被注册过了！')
+            flash('这个用户名已经被注册过了！', "warning")
         elif User.query.filter(User.email==email).first():
-            flash('这个邮箱已经被注册过了！')
+            flash('这个邮箱已经被注册过了！', "warning")
         else:
-            new_user = User(username=username, email=email, id=None)
+            new_user = User(username=username, email=email, active=False, id=None)
+            # add a User(active = False)
             new_user.set_password(password)
             db.session.add(new_user)
             # try:
@@ -111,8 +112,9 @@ def register():
             #     flash("注册失败，请重试！")
             #     db.session.rollback()
             db.session.commit()
+            flash("感谢注册，请联系管理员激活账号！", "success")
             return redirect(url_for('public.login'))
-    return render_template('public/register1.html', form=form)
+    return render_template('public/register.html', form=form)
 
 
 
