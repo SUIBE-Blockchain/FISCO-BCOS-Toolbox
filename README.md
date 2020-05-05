@@ -1,8 +1,10 @@
 # FISCO BCOS Toolbox
-
 FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.
 
 由上海对外经贸大学区块链技术与应用研究中心研发的针对 FISCO BCOS 的工具箱。
+
+  [![Build Status](https://travis-ci.com/SUIBE-Blockchain/FISCO_BCOS_Toolbox.svg?branch=master)](https://travis-ci.com/SUIBE-Blockchain/FISCO_BCOS_Toolbox)
+  
 内容包括：
 
 - FISCO BCOS 地址生成（已完成）
