@@ -11,14 +11,23 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('public.home') }}">Home
+        <a class="nav-link" href="{{ url_for('public.home') }}">主页
           <span class="sr-only">(current)</span>
         </a>
       </li>
+      {% if current_user and current_user.is_authenticated %}
+      
       <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('public.about') }}">About</a>
+        <a class="nav-link" href="{{ url_for('user.sdk_config') }}">配置 SDK</a>
+      </li>
+    
+      {% endif %}
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('public.about') }}">关于</a>
       </li>
     </ul>
+
     {% if current_user and current_user.is_authenticated %}
     <ul class="navbar-nav my-auto">
       <li class="nav-item active">
