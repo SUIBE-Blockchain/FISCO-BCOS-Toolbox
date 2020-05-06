@@ -12,7 +12,7 @@ def members():
     """List members."""
     return render_template("users/members.html")
 
-@blueprint.route("/sdk_config")
+@user_bp.route("/sdk_config")
 @login_required
 def sdk_config():
     """List members."""
