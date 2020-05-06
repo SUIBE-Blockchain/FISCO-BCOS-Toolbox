@@ -16,4 +16,4 @@ def members():
 @login_required
 def sdk_config():
     """List members."""
-    return render_template("users/members.html")
+    return render_template("users/sdk_config.html")
