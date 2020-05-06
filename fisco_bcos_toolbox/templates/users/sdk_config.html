@@ -1,0 +1,34 @@
+
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+        <br>
+        <center><h2>配置 FISCO BCOS Python-SDK</h2></center>
+        <form>
+            <div class="form-group">
+            <label for="client_protocol">Client Protocol 客户端协议：</label>
+            <select class="form-control" id="client_protocol">
+                <option>RPC</option>
+                <option>Channel</option>
+            </select>
+            </div>
+            <div class="form-group">
+              <label for="host">Host 主机：</label>
+              <input class="form-control" id="host" aria-describedby="hostHelp" value="{{client_config.channel_host}}">
+              <small id="hostHelp" class="form-text text-muted">填入主机名称</small>
+            </div>
+
+            <div class="form-group">
+                <label for="host">端口：</label>
+                <input class="form-control" id="port" aria-describedby="portHelp" value="{{client_config.channel_port}}">
+                <small id="portHelp" class="form-text text-muted">填入端口名称</small>
+              </div>
+            <div class="form-group">
+                //TODO account keyfile
+            </div>
+            <button type="submit" class="btn btn-primary">修改！</button>
+          </form>
+        
+    </div>
+{% endblock %}
+
