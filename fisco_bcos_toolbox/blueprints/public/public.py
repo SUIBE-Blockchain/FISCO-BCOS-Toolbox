@@ -34,7 +34,9 @@ def home():
             return redirect(redirect_url)
         else:
             flash_errors(form)
-    return render_template("public/home.html", form=form)
+    # TODO
+    mock_data = ["byte32", "int", "bytes"]
+    return render_template("public/home.html", form=form, mock_data=mock_data)
 
 
 @public_bp.route("/logout/")
