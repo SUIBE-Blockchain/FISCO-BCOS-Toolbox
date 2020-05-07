@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """Test forms."""
 
-from fisco_bcos_toolbox.public.forms import LoginForm
-from fisco_bcos_toolbox.user.forms import RegisterForm
+from fisco_bcos_toolbox.forms import RegisterForm, LoginForm
 
 
 class TestRegisterForm:

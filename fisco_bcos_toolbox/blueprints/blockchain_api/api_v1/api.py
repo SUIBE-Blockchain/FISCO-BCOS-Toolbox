@@ -14,9 +14,9 @@ import json
 
 from fisco_bcos_toolbox.blockchain import Ethereum
 
-blueprint = Blueprint("blockchain_api", __name__, static_folder="../static")
+api_bp = Blueprint("blockchain_api", __name__, static_folder="../static")
 
-@blueprint.route("/api/generate_addr", methods=["GET", "POST"])
+@api_bp.route("/generate_addr", methods=["GET", "POST"])
 @csrf_protect.exempt
 def gen_addr():
     payload = trans(request.get_data(as_text=True))
