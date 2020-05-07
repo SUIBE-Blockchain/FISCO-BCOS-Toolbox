@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block content %}
+    <h5>{{ users|length }} messages
+        <small class="float-right">
+            <a href="#bottom" title="Go Bottom">&darr;</a>
+        </small>
+    </h5>
+    <div class="list-group">
+        {% for user in users %}
+            <a class="list-group-item list-group-item-action flex-column">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1 text-success">{{ user.username }}
+                        <small class="text-muted"> #{{ loop.revindex }}</small>
+                    </h5>
+                    <small data-toggle="tooltip" data-placement="top"
+                           data-timestamp="{{ user.created_at.strftime('%Y-%m-%dT%H:%M:%SZ') }}"
+                           data-delay="500">
+                    </small>
+                </div>
+                <p class="mb-1">active: {{ user.active }}</p>
+                <p class="mb-1">created in: {{ user.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                {% if user.active %}
+                    {% if not user.is_admin %}
+                        <a href="{{ url_for('admin.cancleactive', username=user.username) }}"><button>Cancel Active</button></a>
+                    {% endif %} 
+                {% else %}
+                    {% if not user.is_admin %}
+                        <a href="{{ url_for('admin.addactive', username=user.username) }}"><button>Add Active</button></a>
+                    {% endif %}    
+                {% endif %}
+                <!-- <a href="/"><button {% if user.active %}disabled="disabled"{% endif %}>is_active</button></a> -->
+        {% endfor %}
+    </div>
+{% endblock %}
