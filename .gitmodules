@@ -1,3 +1,6 @@
 [submodule "python-sdk"]
 	path = python-sdk
 	url = https://github.com/FISCO-BCOS/python-sdk.git
+[submodule "fb_python_sdk"]
+	path = fb_python_sdk
+	url = https://github.com/FISCO-BCOS/python-sdk.git
