@@ -22,7 +22,7 @@ def is_safe_url(target):
     return test_url.scheme in ('http', 'https') and ref_url.netloc == test_url.netloc
 
 
-def redirect_back(default='public.index', **kwargs):
+def redirect_back(default='public.home', **kwargs):
     for target in request.args.get('next'), request.referrer:
         if not target:
             continue

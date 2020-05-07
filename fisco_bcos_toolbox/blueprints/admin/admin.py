@@ -7,6 +7,7 @@ from flask import (
     render_template,
     request,
     url_for,
+    abort
 )
 from flask_login import login_required, login_user, logout_user, current_user
 
@@ -26,22 +27,30 @@ def index():
         print(users)
         return render_template('admin/admin.html', users=users)
     else:
-        redirect_back()
+        return abort(404)
 
 @admin_bp.route('/addactive', methods=['GET', 'POST'])
 @login_required
 def addactive():
-    username = request.args.get('username')
-    user = User.query.filter(User.username==username).first()
-    user.active = True
-    db.session.commit()
-    return redirect_back()
+    if current_user.is_admin:
+        username = request.args.get('username')
+        user = User.query.filter(User.username==username).first()
+        user.active = True
+        db.session.commit()
+        return redirect_back()
+    else:
+        return abort(404)
+    
 
 @admin_bp.route('/cancleactive', methods=['GET', 'POST'])
 @login_required
 def cancleactive():
-    username = request.args.get('username')
-    user = User.query.filter(User.username==username).first()
-    user.active = False
-    db.session.commit()
-    return redirect_back()
+    if current_user.is_admin:
+        username = request.args.get('username')
+        user = User.query.filter(User.username==username).first()
+        user.active = False
+        db.session.commit()
+        return redirect_back()
+    else:
+        return abort(404)
+    
