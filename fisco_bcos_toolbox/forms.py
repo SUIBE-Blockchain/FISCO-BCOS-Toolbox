@@ -12,7 +12,6 @@ class LoginForm(FlaskForm):
 
     username = StringField("Username", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
-    submit = SubmitField('Login')
 
     def __init__(self, *args, **kwargs):
         """Create instance."""
