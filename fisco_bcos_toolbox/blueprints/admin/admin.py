@@ -24,7 +24,6 @@ admin_bp = Blueprint("admin", __name__, static_folder="../static")
 def index():
     if current_user.is_admin:
         users = User.query.order_by(User.created_at.desc()).all()
-        print(users)
         return render_template('admin/admin.html', users=users)
     else:
         return abort(404)
@@ -54,3 +53,27 @@ def cancleactive():
     else:
         return abort(404)
     
+
+@admin_bp.route('/add_all_active', methods=['GET', 'POST'])
+@login_required
+def add_all_active():
+    if current_user.is_admin:
+        users = User.query.order_by(User.created_at.desc()).all()
+        for user in users:
+            user.active = True
+        db.session.commit()
+        return redirect_back()
+    else:
+        return abort(404)
+
+@admin_bp.route('/cancle_all_active', methods=['GET', 'POST'])
+@login_required
+def cancle_all_active():
+    if current_user.is_admin:
+        users = User.query.order_by(User.created_at.desc()).all()
+        for user in users:
+            user.active = False
+        db.session.commit()
+        return redirect_back()
+    else:
+        return abort(404)

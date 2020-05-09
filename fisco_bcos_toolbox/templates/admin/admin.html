@@ -32,5 +32,10 @@
                 {% endif %}
                 <!-- <a href="/"><button {% if user.active %}disabled="disabled"{% endif %}>is_active</button></a> -->
         {% endfor %}
+
+        <a href="{{ url_for('admin.add_all_active') }}"><button>Add ALL Active</button></a>
+        
+        <a href="{{ url_for('admin.cancle_all_active') }}"><button>Cancel ALL Active</button></a>
+
     </div>
 {% endblock %}
