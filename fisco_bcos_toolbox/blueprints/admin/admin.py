@@ -72,7 +72,8 @@ def cancle_all_active():
     if current_user.is_admin:
         users = User.query.order_by(User.created_at.desc()).all()
         for user in users:
-            user.active = False
+            if not user.is_admin:
+                user.active = False
         db.session.commit()
         return redirect_back()
     else:
