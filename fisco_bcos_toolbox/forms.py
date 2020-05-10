@@ -35,7 +35,7 @@ class LoginForm(FlaskForm):
             return False
 
         if not self.user.active and not self.user.is_admin:
-            self.username.errors.append("User not activated or not admin.")
+            self.username.errors.append("User not activated or not admin")
             return False
         return True
 
