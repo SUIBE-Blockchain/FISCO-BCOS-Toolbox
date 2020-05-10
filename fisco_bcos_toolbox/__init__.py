@@ -7,6 +7,7 @@ from flask import Flask, render_template
 
 from fisco_bcos_toolbox.blueprints.public.public import public_bp
 from fisco_bcos_toolbox.blueprints.user.user import user_bp
+from fisco_bcos_toolbox.blueprints.admin.admin import admin_bp
 from fisco_bcos_toolbox.blueprints.blockchain_api.api_v1.api import api_bp
 
 from fisco_bcos_toolbox.extensions import (
@@ -56,7 +57,8 @@ def register_blueprints(app):
     
     app.register_blueprint(public_bp)
     app.register_blueprint(user_bp, url_prefix='/user')
-    app.register_blueprint(api_bp, url_prefix='/api/v1')    
+    app.register_blueprint(admin_bp, url_prefix='/admin')
+    app.register_blueprint(api_bp, url_prefix='/api/v1') 
 
 
 def register_errorhandlers(app):
@@ -66,7 +68,7 @@ def register_errorhandlers(app):
         """Render error template."""
         # If a HTTPException, pull the `code` attribute; default to 500
         error_code = getattr(error, "code", 500)
-        return render_template("errors/"+ str(error_code) + ".html"), error_code
+        return render_template("errors/{}.html".format(str(error_code))), error_code
 
     for errcode in [401, 404, 500]:
         app.errorhandler(errcode)(render_error)
