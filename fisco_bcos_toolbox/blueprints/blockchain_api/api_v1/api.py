@@ -21,10 +21,24 @@ api_bp = Blueprint("blockchain_api", __name__, static_folder="../static")
 def gen_addr():
     payload = trans(request.get_data(as_text=True))
     if (payload == ""):
-        return json.dumps(Ethereum.generate_addr())
+        priv = request.args.get("priv")
+        if priv == None:
+            return json.dumps(Ethereum.generate_addr())
     else:
-        return json.dumps(Ethereum.generate_addr(payload["priv"]))
+        priv = payload["priv"]
     
+    return json.dumps(Ethereum.generate_addr(priv))
+
+@api_bp.route("/translate_sig", methods=["GET","POST"])
+@csrf_protect.exempt
+def translate_sig():
+    if request.method == "GET":
+        sig = request.args.get("sig")
+    else:
+        sig = trans(request.get_data(as_text=True))["sig"]
+    
+    return json.dumps(Ethereum.split_sig(sig))   
+
 def trans(payload):
     try:
         return json.loads(payload)

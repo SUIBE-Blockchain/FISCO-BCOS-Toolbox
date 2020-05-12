@@ -16,3 +16,14 @@ class Ethereum:
         "payload":
         {"addr": account.address, 
         "priv": account.privateKey.hex()}}
+    
+    @staticmethod
+    def split_sig(sig):
+        try:
+            r = sig[:66]
+            s = "0x" + sig[66:130]
+            v = int(sig[130:],16)
+            return {"result": "success",
+            "payload": {"r": r, "s": s, "v": v}}
+        except:
+            return {"result": "error"}
