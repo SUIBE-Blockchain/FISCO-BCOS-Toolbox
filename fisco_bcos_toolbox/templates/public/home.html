@@ -17,7 +17,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8">
-      <h3><i class="fa fa-angellist"></i> 生成测试用私钥与地址</h3>
+      <a class="no_type_a" target="_blank" data-tooltip="点击查看 API 文档" href="https://github.com/SUIBE-Blockchain/FISCO_BCOS_Toolbox/wiki/%E6%8E%A5%E5%8F%A3-v1.0#1-generate-address"><h3><i class="fa fa-angellist"></i>生成测试用私钥与地址</h3></a>
       <br>
       <p>
         <a class="btn btn-outline-secondary" v-on:click="get_addr()">Generate!</a>
@@ -42,7 +42,7 @@
   <br>
   <div class = "row">
     <div class="col-lg-8">
-      <h3><i class="fa fa-flask"></i> 生成 Mock Data</h3>
+      <a class="no_type_a"><h3><i class="fa fa-flask"></i> 生成 Mock Data</h3></a>
       <br>
       <div class="form-group">
         <label class="control-label">选择你要模拟的数据类型：</label>
@@ -51,7 +51,7 @@
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
               <select  v-model="mock_type" v-on:change="generate_mock_data(mock_type)" name="select-mock-type" class="form-control selectpicker" >
-                {% for item in mock_data %}
+                {% for item in mock_data_type %}
                   <option value={{item}}>{{item}}</option>
                 {% endfor %}
               </select>
@@ -68,7 +68,63 @@
 
         </div>
    </div>
-  </div>
+  </div><!-- /.row -->
+  <br>
+  <div class = "row">
+    <div class="col-lg-8">
+      <a class="no_type_a" target="_blank" data-tooltip="点击查看 API 文档" href="https://github.com/SUIBE-Blockchain/FISCO_BCOS_Toolbox/wiki/%E6%8E%A5%E5%8F%A3-v1.0#2-translate-signature"><h3><i class="fa fa-share"></i> 数据转换器</h3></a>
+      <br>
+      <div class="form-group">
+        <label class="control-label">转换什么：</label>
+        <br>
+          <div class="selectContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+              <select  v-model="trans_type" v-on:change="translate_data(trans_type)" name="select-trans-type" class="form-control selectpicker" >
+                {% for item in trans_type%}
+                  <option value={{item}}>{{item}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="input-group mb-3">
+            <input v-model="trans_data" type="text" class="form-control" placeholder="Trans-Data" aria-label="Trans-Data" aria-describedby="basic-addon1">
+          </div>
+          <br>
+          <a class="btn btn-outline-secondary" v-on:click="translate_data(trans_type,trans_data)">Translate!</a>
+          <br>
+          <br>
+
+          <div v-if="trans_type=='signature'">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">r :</span>
+              </div>
+              <input v-model="r" type="text" class="form-control" placeholder="r" aria-label="r" aria-describedby="basic-addon1">
+            </div>
+            
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">s:</span>
+              </div>
+            <input v-model="s" type="text" class="form-control" placeholder="s" aria-label="s" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">v:</span>
+              </div>
+            <input v-model="v" type="text" class="form-control" placeholder="v" aria-label="v" aria-describedby="basic-addon1">
+            </div>
+
+            <a class="btn btn-info" target="_blank" href="https://mp.weixin.qq.com/mp/homepage?__biz=MzI0NTM0MzE5Mw==&hid=8&sn=82ca9c82b72fca9eaec924787a63e593"><i class="fa fa-book" aria-hidden="true"></i> 什么是r, s, v？</a>
+          </div>
+
+        </div>
+   </div>
+  </div><!-- /.row -->
+
   <br>
 
   <div class="row">
@@ -90,6 +146,12 @@
       addr: "",
       mock_type: "byte32",
       mock_data: "0x7465737400000000000000000000000000000000000000000000000000000000",
+      trans_type: "signature",
+      trans_data: "",
+      translated_data: new Object(),
+      r: "",
+      s: "",
+      v: "",
     },
     methods:
     {
@@ -112,13 +174,12 @@
       },
     get_addr_by_priv:function(priv)
     {
-        console.log(priv)
         axios({
             method:'post',
-            url:'api/generate_addr',
+            url:'api/v1/generate_addr',
             data:
             {
-                priv: context.priv,
+                priv: priv,
             },
             headers:
             {
@@ -126,13 +187,36 @@
             }                             
         })
         .then(function(response){
-          context.priv = response.data.payload.priv
+          context.translated_data = response.data.payload.priv
           context.addr = response.data.payload.addr
         })
         .catch(function(error){
-
+          console.log(error)
         })
     },
+    translate_sig:function(sig){
+      axios({
+            method:'post',
+            url:'api/v1/translate_sig',
+            data:
+            {
+                sig: sig,
+            },
+            headers:
+            {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }                             
+        })
+        .then(function(response){
+          result = response.data.payload
+          context.r = result["r"]
+          context.s = result["s"]
+          context.v = result["v"]
+        })
+        .catch(function(error){
+          console.log(error)
+        })      
+    },  
     generate_mock_data:function(mock_type){
       if(mock_type=="byte32"){
         context.mock_data="0x7465737400000000000000000000000000000000000000000000000000000000"
@@ -143,7 +227,12 @@
       else if(mock_type=="bytes"){
         context.mock_data="0x233"
       }
-    }
+    },
+    translate_data: function(trans_type, trans_data){
+      if(trans_type=="signature"){
+        context.translate_sig(trans_data)
+      }
+    },
     }
 
   })

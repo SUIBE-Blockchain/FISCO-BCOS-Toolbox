@@ -35,8 +35,12 @@ def home():
         else:
             flash_errors(form)
     # TODO
-    mock_data = ["byte32", "int", "bytes"]
-    return render_template("public/home.html", form=form, mock_data=mock_data)
+    mock_data_type = ["byte32", "int", "bytes"]
+    trans_type = ["signature"]
+    return render_template("public/home.html",
+     form=form,
+     mock_data_type=mock_data_type,
+     trans_type=trans_type)
 
 
 @public_bp.route("/logout/")
