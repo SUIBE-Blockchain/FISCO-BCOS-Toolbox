@@ -130,7 +130,7 @@ dmypy.json
 
 # Database
 *.db
-fisco_bcos_toolbox/test.db
+./fisco_bcos_toolbox/test.db
 
 
 package-lock.json
