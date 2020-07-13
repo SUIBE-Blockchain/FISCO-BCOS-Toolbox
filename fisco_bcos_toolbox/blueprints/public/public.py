@@ -37,12 +37,10 @@ def home():
     # TODO
     mock_data_type = ["byte32", "int", "bytes"]
     trans_type = ["signature"]
-    crypto_type = ['ECDSA','GM']
     return render_template("public/home.html",
      form=form,
      mock_data_type=mock_data_type,
      trans_type=trans_type,
-     crypto_type=crypto_type
      )
 
 
@@ -132,3 +130,13 @@ def about():
     """About page."""
     form = LoginForm(request.form)
     return render_template("public/about.html", form=form)
+
+@public_bp.route("/sdk_config/")
+def sdk_config():
+    """About page."""
+    form = LoginForm(request.form)
+    crypto_type = ['ECDSA','GM']
+    return render_template("public/sdk_config.html", 
+    form=form,
+    crypto_type=crypto_type,
+    )

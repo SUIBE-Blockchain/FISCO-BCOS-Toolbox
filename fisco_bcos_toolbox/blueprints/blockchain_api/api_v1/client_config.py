@@ -7,7 +7,7 @@ from eth_utils.crypto import set_crypto_type, CRYPTO_TYPE_GM, CRYPTO_TYPE_ECDSA
 
 class client_config:
     """
-    类成员常量和变量，便于用.调用和区分命名空间 
+    类成员常量和变量，便于用.调用和区分命名空间
     """
     # keyword used to represent the RPC Protocol
     PROTOCOL_RPC = "rpc"
@@ -16,17 +16,17 @@ class client_config:
 
     # ---------crypto_type config--------------
     # crypto_type : 大小写不敏感："GM" for 国密, "ECDSA" 或其他是椭圆曲线默认实现。
-    crypto_type = "ECDSA"
+    crypto_type = "GM"
     crypto_type = crypto_type.upper()
     set_crypto_type(crypto_type)  # 使密码算法模式全局生效，切勿删除此行
 
     # --------------------------------------
     # configure below
     # ---------client communication config--------------
-    client_protocol = "channel"  # or PROTOCOL_CHANNEL to use channel prototol
+    client_protocol = "88888888888"  # or PROTOCOL_CHANNEL to use channel prototol
     # client_protocol = PROTOCOL_CHANNEL
-    remote_rpcurl = "http://192.168.174.131:8545"  # 采用rpc通信时，节点的rpc端口,和要通信的节点*必须*一致,如采用channel协议通信，这里可以留空
-    channel_host = "192.168.174.131"  # 采用channel通信时，节点的channel ip地址,如采用rpc协议通信，这里可以留空
+    remote_rpcurl = "http://127.0.0.1:8545"  # 采用rpc通信时，节点的rpc端口,和要通信的节点*必须*一致,如采用channel协议通信，这里可以留空
+    channel_host = "127.0.0.1"  # 采用channel通信时，节点的channel ip地址,如采用rpc协议通信，这里可以留空
     channel_port = 20200  # 节点的channel 端口,如采用rpc协议通信，这里可以留空
     channel_ca = "bin/ca.crt"  # 采用channel协议时，需要设置链证书,如采用rpc协议通信，这里可以留空
     channel_node_cert = "bin/sdk.crt"  # 采用channel协议时，需要设置sdk证书,如采用rpc协议通信，这里可以留空
@@ -49,6 +49,6 @@ class client_config:
     # path of solc compiler
     solc_path = "./bin/solc.exe"
     gm_solc_path = "./bin/solc/v0.4.25/solc-gm"
-    solcjs_path = "./solcjs"
+    solcjs_path = "./solc.js"
 
     logdir = "bin/logs"  # 默认日志输出目录，该目录必须先建立
