@@ -40,7 +40,8 @@ def home():
     return render_template("public/home.html",
      form=form,
      mock_data_type=mock_data_type,
-     trans_type=trans_type)
+     trans_type=trans_type,
+     )
 
 
 @public_bp.route("/logout/")
@@ -129,3 +130,13 @@ def about():
     """About page."""
     form = LoginForm(request.form)
     return render_template("public/about.html", form=form)
+
+@public_bp.route("/sdk_config/")
+def sdk_config():
+    """About page."""
+    form = LoginForm(request.form)
+    crypto_type = ['ECDSA','GM']
+    return render_template("public/sdk_config.html", 
+    form=form,
+    crypto_type=crypto_type,
+    )

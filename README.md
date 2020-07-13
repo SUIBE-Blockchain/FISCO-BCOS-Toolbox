@@ -13,6 +13,7 @@ FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.
 内容包括：
 
 - FISCO BCOS 地址生成（已完成）
+- SDK Config 在线生成 （已完成）
 - 开发中的数据模拟（构建中）
 - 智能合约案例合集（构建中）
 - SDK 功能通过WEB页面调用（构建中）

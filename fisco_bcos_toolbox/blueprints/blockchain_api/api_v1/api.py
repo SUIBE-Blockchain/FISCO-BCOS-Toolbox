@@ -8,13 +8,17 @@ from flask import (
     render_template,
     request,
     url_for,
+    send_from_directory,
+    send_file,
+    make_response,
 )
 from fisco_bcos_toolbox.extensions import csrf_protect
-import json
+import json,os
 
 from fisco_bcos_toolbox.blockchain import Ethereum
 
 api_bp = Blueprint("blockchain_api", __name__, static_folder="../static")
+now_path = 'fisco_bcos_toolbox\\blueprints\\blockchain_api\\api_v1'
 
 @api_bp.route("/generate_addr", methods=["GET", "POST"])
 @csrf_protect.exempt
@@ -45,3 +49,29 @@ def trans(payload):
         # return json.dumps(a_json, sort_keys=True, indent=4, separators=(',', ':'))
     except:
         return payload
+
+
+@api_bp.route("/get_sdk_config", methods=["POST"])
+@csrf_protect.exempt
+def get_sdk_config():
+    payload = trans(request.get_data(as_text=True))
+    path=os.getcwd()
+    if get_sdk_config_tool(payload):
+        response=make_response(send_file("{}\\{}\\client_config.py".format(path,now_path)))
+        response.headers["Content-Disposition"] = "attachment; filename=client_config.py"
+    else:
+        response='erro'
+    return response
+
+
+def get_sdk_config_tool(data):
+    try:
+        with open('{}\\client_config.py.template'.format(now_path),'r',encoding='utf8') as r:
+            _t=r.read()
+            _t=_t.format(**data)
+            with open('{}\\client_config.py'.format(now_path),'w',encoding='utf8') as w:
+                w.write(_t)
+    except Exception:
+        return False
+    return True
+        
