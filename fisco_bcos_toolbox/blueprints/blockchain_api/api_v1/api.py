@@ -55,20 +55,12 @@ def trans(payload):
 @csrf_protect.exempt
 def get_sdk_config():
     payload = trans(request.get_data(as_text=True))
-    # if (payload == ""):
-    #     priv = request.args.get("priv")
-    #     if priv == None:
-    #         return json.dumps(Ethereum.generate_addr())
-    # else:
-    #     priv = payload["priv"]
     path=os.getcwd()
-    # return json.dumps(Ethereum.generate_addr(priv))
     if get_sdk_config_tool(payload):
         response=make_response(send_file("{}\\{}\\client_config.py".format(path,now_path)))
         response.headers["Content-Disposition"] = "attachment; filename=client_config.py"
     else:
         response='erro'
-        print('erro')
     return response
 
 
@@ -77,11 +69,9 @@ def get_sdk_config_tool(data):
         with open('{}\\client_config.py.template'.format(now_path),'r',encoding='utf8') as r:
             _t=r.read()
             _t=_t.format(**data)
-            print(_t)
             with open('{}\\client_config.py'.format(now_path),'w',encoding='utf8') as w:
                 w.write(_t)
-    except Exception as e:
-        print(e)
+    except Exception:
         return False
     return True
         
