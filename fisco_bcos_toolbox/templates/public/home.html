@@ -125,8 +125,167 @@
    </div>
   </div><!-- /.row -->
 
-  <br>
 
+  <br>
+  <!-- up sdk config -->
+
+  <div class = "row">
+    <div class="col-lg-8">
+      <a class="no_type_a" target="_blank" ><h3><i class="fa fa-cogs"></i> SDK配置文件生成(目前仅支持Python SDK)</h3></a>
+      <br>
+      <div class="form-group">
+
+        <label class="control-label">算法类型配置：</label>
+
+          <div class="selectContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+              <select id='crypto_type' name="crypto_type" class="form-control selectpicker" >
+                {% for item in crypto_type%}
+                  <option value={{item}}>{{item}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <br>
+
+          <label class="control-label">通用配置：</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">contract_info_file:</span>
+              </div>
+              <input type="text" class="form-control" aria-describedby="basic-addon1" value="bin/contract.ini" id='contract_info_file'>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">account_keyfile_path:</span>
+              </div>
+              <input type="text" class="form-control" aria-describedby="basic-addon1" value="bin/accounts" id='account_keyfile_path'>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">logdir:</span>
+              </div>
+              <input type="text" class="form-control" aria-describedby="basic-addon1" value="bin/logs" id='logdir'>
+            </div>
+
+            <label class="control-label">账户配置：</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">account_keyfile:</span>
+              </div>
+              <input type="text" class="form-control" aria-describedby="basic-addon1" value="pyaccount.keystore" id='account_keyfile'>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">account_password:</span>
+              </div>
+              <input type="text" class="form-control" aria-describedby="basic-addon1" value="123456" id='account_password'>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">gm_account_keyfile:</span>
+              </div>
+              <input type="text" class="form-control" aria-describedby="basic-addon1" value="gm_account.json" id='gm_account_keyfile'>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">gm_account_password:</span>
+              </div>
+              <input type="text" class="form-control" aria-describedby="basic-addon1" value="123456" id='gm_account_password'>
+            </div>
+
+              <label class="control-label">群组配置：</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">fiscoChainId:</span>
+                </div>
+                <input type="text" class="form-control" aria-describedby="basic-addon1" value="1" id='fiscoChainId'>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">groupid:</span>
+                </div>
+                <input type="text" class="form-control" aria-describedby="basic-addon1" value="1" id='groupid'>
+              </div>
+
+
+              <label class="control-label">通信配置：</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">client_protocol:</span>
+                </div>
+                <input type="text" class="form-control" aria-describedby="basic-addon1" value="channel" id='client_protocol'>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">remote_rpcurl:</span>
+                </div>
+                <input type="text" class="form-control" aria-describedby="basic-addon1" value="http://127.0.0.1:8545" id='remote_rpcurl'>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">channel_host:</span>
+                </div>
+                <input type="text" class="form-control" aria-describedby="basic-addon1" value="127.0.0.1" id='channel_host'>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">channel_port:</span>
+                </div>
+                <input type="text" class="form-control" aria-describedby="basic-addon1" value="20200" id='channel_port'>
+              </div>
+
+
+                <label class="control-label">证书配置：</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">channel_ca:</span>
+                  </div>
+                  <input type="text" class="form-control" aria-describedby="basic-addon1" value="bin/ca.crt" id='channel_ca'>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">channel_node_cert:</span>
+                  </div>
+                  <input type="text" class="form-control" aria-describedby="basic-addon1" value="bin/sdk.crt" id='channel_node_cert'>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">channel_node_key:</span>
+                  </div>
+                  <input type="text" class="form-control" aria-describedby="basic-addon1" value="bin/sdk.key" id='channel_node_key'>
+                </div>
+
+                  <label class="control-label">solc编译器配置：</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">solc_path:</span>
+                    </div>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="./bin/solc.exe" id='solc_path'>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">gm_solc_path:</span>
+                    </div>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="./bin/solc/v0.4.25/solc-gm" id='gm_solc_path'>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">solcjs_path:</span>
+                    </div>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="./solc.js" id='solcjs_path'>
+        </div>
+          <!-- <br> -->
+          <a class="btn btn-outline-secondary" v-on:click="get_sdk_config()">Create&Download</a>
+          
+          <br>
+          <br>
+        </div>
+   </div>
+  </div>
+
+<!-- down sdk config -->
   <div class="row">
     <div class="col-lg-8">
       <h3><i class="fa fa-edit"></i> 合约案例库</h3>
@@ -194,6 +353,75 @@
           console.log(error)
         })
     },
+    
+    get_sdk_config_w3:function(
+      crypto_type,
+      contract_info_file,
+      account_keyfile_path,
+      logdir,
+      account_keyfile,
+      account_password,
+      gm_account_keyfile,
+      gm_account_password,
+      fiscoChainId,
+      groupid,
+      client_protocol,
+      remote_rpcurl,
+      channel_host,
+      channel_port,
+      channel_ca,
+      channel_node_cert,
+      channel_node_key,
+      solc_path,
+      gm_solc_path,
+      solcjs_path,
+    )
+    {
+        const link = document.createElement('a')
+        axios({
+            method:'post',
+            url:'api/v1/get_sdk_config',
+            data:
+            {
+              'crypto_type':crypto_type,
+              'contract_info_file':contract_info_file,
+              account_keyfile_path:account_keyfile_path,
+              logdir:logdir,
+              account_keyfile:account_keyfile,
+              account_password:account_password,
+              gm_account_keyfile:gm_account_keyfile,
+              gm_account_password:gm_account_password,
+              fiscoChainId:fiscoChainId,
+              groupid:groupid,
+              client_protocol:client_protocol,
+              remote_rpcurl:remote_rpcurl,
+              channel_host:channel_host,
+              channel_port:channel_port,
+              channel_ca:channel_ca,
+              channel_node_cert:channel_node_cert,
+              channel_node_key:channel_node_key,
+              solc_path:solc_path,
+              gm_solc_path:gm_solc_path,
+              solcjs_path:solcjs_path,
+            },
+            headers:
+            {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }                             
+        })
+        .then(function(response){
+          console.log('[+]oh is ok!')
+          let blob = new Blob([response.data], {type: "application/x-www-form-urlencoded"});  // res就是接口返回的文件流了
+          let objectUrl = URL.createObjectURL(blob); 
+          link.href=objectUrl
+          link.download='client_config.py'
+          link.click()
+          // window.location.href = objectUrl; 
+        })
+        .catch(function(error){
+          console.log(error)
+        })
+    },
     translate_sig:function(sig){
       axios({
             method:'post',
@@ -232,6 +460,30 @@
       if(trans_type=="signature"){
         context.translate_sig(trans_data)
       }
+    },
+    get_sdk_config: function(){
+        context.get_sdk_config_w3(
+          window.crypto_type.value,
+          window.contract_info_file.value,
+          window.account_keyfile_path.value,
+          window.logdir.value,
+          window.account_keyfile.value,
+          window.account_password.value,
+          window.gm_account_keyfile.value,
+          window.gm_account_password.value,
+          window.fiscoChainId.value,
+          window.groupid.value,
+          window.client_protocol.value,
+          window.remote_rpcurl.value,
+          window.channel_host.value,
+          window.channel_port.value,
+          window.channel_ca.value,
+          window.channel_node_cert.value,
+          window.channel_node_key.value,
+          window.solc_path.value,
+          window.gm_solc_path.value,
+          window.solcjs_path.value,
+        )
     },
     }
 
