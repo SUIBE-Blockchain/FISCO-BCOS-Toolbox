@@ -7,7 +7,7 @@ from eth_utils.crypto import set_crypto_type, CRYPTO_TYPE_GM, CRYPTO_TYPE_ECDSA
 
 class client_config:
     """
-    类成员常量和变量，便于用.调用和区分命名空间
+    类成员常量和变量，便于用.调用和区分命名空间 
     """
     # keyword used to represent the RPC Protocol
     PROTOCOL_RPC = "rpc"
