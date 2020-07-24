@@ -4,7 +4,7 @@ import logging
 import sys
 
 from flask import Flask, render_template
-
+from flask_cors import CORS
 from fisco_bcos_toolbox.blueprints.public.public import public_bp
 from fisco_bcos_toolbox.blueprints.user.user import user_bp
 from fisco_bcos_toolbox.blueprints.admin.admin import admin_bp
@@ -29,6 +29,7 @@ def create_app(config_object="fisco_bcos_toolbox.settings"):
     :param config_object: The configuration object to use.
     """
     app = Flask('fisco_bcos_toolbox')
+    CORS(app)
     app.config.from_object(config_object)
     register_extensions(app)
     register_blueprints(app)

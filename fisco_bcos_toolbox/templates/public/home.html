@@ -1,6 +1,18 @@
 
 {% extends "layout.html" %}
 {% block content %}
+
+
+
+
+
+<!--js填充处-->
+
+
+
+
+
+
 <div id="context">
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -14,6 +26,8 @@
     </div>
 </div><!-- /.jumbotron -->
 
+
+
 <div class="container">
   <div class="row">
     <div class="col-lg-8">
@@ -22,7 +36,27 @@
       <p>
         <a class="btn btn-outline-secondary" v-on:click="get_addr()">Generate!</a>
         <a class="btn btn-outline-secondary" v-on:click="get_addr_by_priv(priv)">Generate by Privkey!</a>
+        <a class="btn btn-outline-secondary" id="expressArea" href="javascript:void(0)">
+          显示已生成的地址私钥
+        </a>
+
+      <div id="areaLayer" class="express-area-box">
+      <article id="areaBox">
+        <ul class="remen" id="remen">
+
+        </ul>
+        <button class="btn-danger" style="margin-left: 10%" onclick="btn_clear()">一键清除缓存数据</button>
+        <ul id="areaList" class="area-list" style="margin-bottom: 500px;"></ul>
+      </article>
+      </div>
+      <!--遮罩层-->
+      <div id="areaMask" class="mask"></div>
       </p>
+
+
+
+
+
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">Privkey:</span>
@@ -30,12 +64,16 @@
         <input v-model="priv" type="text" class="form-control" placeholder="Privkey" aria-label="Privkey" aria-describedby="basic-addon1">
       </div>
 
+
+
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">Address:</span>
         </div>
         <input v-model="addr" readonly="readonly" type="text" class="form-control" placeholder="Address" aria-label="Address" aria-describedby="basic-addon1">
       </div>
+
+
     </div>
     
   </div><!-- /.row -->
@@ -140,7 +178,17 @@
 </div>
 
 </div>
+
 <script>
+
+
+
+
+  function btn_clear() {
+   localStorage.clear();
+   location.reload();
+  }
+
   var context=new Vue({
     el: "#context",
     data: 
@@ -169,8 +217,13 @@
                   }                                
               })
               .then(function(response){
+
                 context.priv = response.data.payload.priv;
                 context.addr = response.data.payload.addr;
+                localStorage.setItem( context.priv,context.addr);
+
+
+
               })
               .catch(function(error){
               })
@@ -179,7 +232,7 @@
     {
         axios({
             method:'post',
-            url:'api/v1/generate_addr',
+            url:'/api/v1/generate_addr',
             data:
             {
                 priv: priv,
@@ -192,6 +245,8 @@
         .then(function(response){
           context.translated_data = response.data.payload.priv
           context.addr = response.data.payload.addr
+          localStorage.setItem( context.translated_data,context.addr);
+
         })
         .catch(function(error){
           console.log(error)
@@ -291,13 +346,60 @@
     },  
     generate_mock_data:function(mock_type){
       if(mock_type=="byte32"){
-        context.mock_data="0x7465737400000000000000000000000000000000000000000000000000000000"
+
+        axios({
+          method:'get',
+          url:'/api/v1/random_bytes32',
+
+          headers:
+                  {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                  }
+        })
+                .then(function(response){
+                  context.mock_data=response.data.message
+
+                })
+                .catch(function(error){
+                  console.log(error)
+                })
       }
       else if(mock_type=="int"){
-        context.mock_data=3
+        axios({
+          method:'get',
+          url:'/api/v1/random_int',
+
+          headers:
+                  {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                  }
+        })
+                .then(function(response){
+                  context.mock_data=response.data.message
+
+                })
+                .catch(function(error){
+                  console.log(error)
+                })
       }
       else if(mock_type=="bytes"){
-        context.mock_data="0x233"
+        axios({
+          method:'get',
+          url:'/api/v1/random_bytes',
+
+          headers:
+                  {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                  }
+        })
+                .then(function(response){
+                  context.mock_data=response.data.message
+
+                })
+                .catch(function(error){
+                  console.log(error)
+                })
+
       }
     },
     translate_data: function(trans_type, trans_data){

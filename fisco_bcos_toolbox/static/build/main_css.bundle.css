@@ -4,6 +4,7 @@
  */
 /* FONT PATH
  * -------------------------- */
+
 @font-face {
   font-family: 'FontAwesome';
   src: url(/static/build/_/node_modules/font-awesome/fonts/fontawesome-webfont.eot);
@@ -11,6 +12,8 @@
   font-weight: normal;
   font-style: normal;
 }
+
+
 .fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -5238,7 +5241,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-secondary.disabled, .btn-outline-secondary:disabled {
-  color: #6c757d;
+  /*color: #6c757d;*/
   background-color: transparent;
 }
 
