@@ -11,11 +11,15 @@ from flask import (
     send_from_directory,
     send_file,
     make_response,
+    jsonify
 )
 from fisco_bcos_toolbox.extensions import csrf_protect
 import json,os
 
 from fisco_bcos_toolbox.blockchain import Ethereum
+# from __future__ import print_function
+import random
+import string
 
 api_bp = Blueprint("blockchain_api", __name__, static_folder="../static")
 now_path = 'fisco_bcos_toolbox\\blueprints\\blockchain_api\\api_v1'
@@ -75,3 +79,28 @@ def get_sdk_config_tool(data):
         return False
     return True
         
+@api_bp.route('/random_bytes32', methods=['GET'])
+def random_bytes32():
+    data = random.randint(10000000000000000000000000000000000000000000000000000000000000000000000000000, 99999999999999999999999999999999999999999999999999999999999999999999999999999)
+
+    return jsonify({
+        'code':'200',
+        'message':hex(data)
+    })
+@api_bp.route('/random_bytes', methods=['GET'])
+def random_bytes():
+    data = random.randint(10, 99)
+
+    return jsonify({
+        'code':'200',
+        'message':hex(data)
+    })
+
+
+@api_bp.route('/random_int', methods=['GET'])
+def random_int():
+    data = random.randint(1,1999989)
+    return jsonify({
+        'code':'200',
+        'message':str(data),
+    })

@@ -1,0 +1,27 @@
+
+a{text-decoration:none;color:inherit;outline:none;}
+.clearfix{clear:both}
+
+
+
+
+.remen li{border-bottom: 1px solid #e2e2e2;text-align: justify;font-size: 16px;line-height: 44px; padding: 0 15px;}
+.lastli{background: #EEEEEE;}
+/*选择地区*/
+h4{padding: 0 10px;}
+.express-area {  background-color: #fff; }
+.express-area a { display: block; padding: 10px; font-size: 17px; background: url(../images/icon_xsj.png) no-repeat 94% 50%;background-size: 16px;}
+.express-area dl { position: relative;  color: #4d525d;border-bottom: 1px solid #ddd; }
+.express-area dl dt { position: absolute; top: 0; left: 0;line-height: 46px ;font-size: 17px;font-weight: normal; }
+.express-area dl dd {  margin-left:100px; text-align: justify;  line-height: 46px}
+
+/*选择地区弹层*/
+.express-area-box { position: absolute; right: -100%; left: 50%; z-index: 120; width: 450px; margin-left: -160px; background-color: #fff; color: #4d525d; }
+.express-area-box .top h3 {padding-left: 15px; font-size: 16px;background: #eeeeee;line-height: 44px;}
+.lastli{text-align: center;font-size: 14px;background: #eeeeee;line-height: 40px;}
+.express-area-box article { height: 100%; overflow-y: scroll; }
+.area-list li {padding: 0 15px; border-bottom: 1px solid #e2e2e2; text-align: justify; line-height: 44px}
+.express-area-box { position: fixed; left:  inherit; width: 450px;height: 100%;right: -100%;top: 0; margin-left: 0;box-shadow: 0 0 20px rgba(0,0,0,1); }
+
+/*遮罩层*/
+.mask { display: none; position: fixed; top: 0; left: 0; z-index: 100; width: 100%; height: 100%; background-color: rgba(0,0,0,.5); }
