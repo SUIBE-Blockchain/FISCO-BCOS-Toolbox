@@ -15,6 +15,14 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">配置</a>
+        <ul class="dropdown-menu" role="menu">
+          <li class="nav-item"><a href="{{ url_for('public.sdk_config') }}">SDK配置</a></li>
+          <li class="nav-item"><a href="{{ url_for('public.about') }}">节点配置</a></li>
+        </ul>
+      </li>
       {% if current_user and current_user.is_authenticated %}
       
       <li class="nav-item">
@@ -25,16 +33,16 @@
       {% endif %}
 
       <li class="nav-item">
+        <a class="nav-link" href="https://www.99kies.club">可运行图书馆</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('public.about') }}">多链虚拟控制台</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{ url_for('public.about') }}">关于</a>
       </li>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown">配置</a>
-        <ul class="dropdown-menu" role="menu">
-          <li class="nav-item"><a href="{{ url_for('public.sdk_config') }}">SDK配置</a></li>
-          <li class="nav-item"><a href="{{ url_for('public.about') }}">节点配置</a></li>
-        </ul>
-      </li>
+
 
     </ul>
 
