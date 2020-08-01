@@ -16,14 +16,14 @@ class client_config:
 
     # ---------crypto_type config--------------
     # crypto_type : 大小写不敏感："GM" for 国密, "ECDSA" 或其他是椭圆曲线默认实现。
-    crypto_type = "GM"
+    crypto_type = "ECDSA"
     crypto_type = crypto_type.upper()
     set_crypto_type(crypto_type)  # 使密码算法模式全局生效，切勿删除此行
 
     # --------------------------------------
     # configure below
     # ---------client communication config--------------
-    client_protocol = "88888888888"  # or PROTOCOL_CHANNEL to use channel prototol
+    client_protocol = "channel"  # or PROTOCOL_CHANNEL to use channel prototol
     # client_protocol = PROTOCOL_CHANNEL
     remote_rpcurl = "http://127.0.0.1:8545"  # 采用rpc通信时，节点的rpc端口,和要通信的节点*必须*一致,如采用channel协议通信，这里可以留空
     channel_host = "127.0.0.1"  # 采用channel通信时，节点的channel ip地址,如采用rpc协议通信，这里可以留空

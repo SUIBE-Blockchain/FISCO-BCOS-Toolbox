@@ -24,19 +24,19 @@
         </ul>
       </li>
       {% if current_user and current_user.is_authenticated %}
-      
+<!--       
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('user.sdk_config') }}">配置 SDK</a>
         
-      </li>
+      </li> -->
     
       {% endif %}
 
       <li class="nav-item">
-        <a class="nav-link" href="https://www.99kies.club">可运行图书馆</a>
+        <a class="nav-link" href="https://www.99kies.club" target="_blank">可运行图书馆</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('public.about') }}">多链虚拟控制台</a>
+        <a class="nav-link" href="https://wetty.cnmf.net.cn/wetty" target="_blank">多链虚拟控制台</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('public.about') }}">关于</a>
