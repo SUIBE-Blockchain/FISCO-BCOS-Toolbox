@@ -1,6 +1,6 @@
 # FISCO BCOS Toolbox
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.
 
@@ -32,6 +32,12 @@ FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/leeduckgo"><img src="https://avatars1.githubusercontent.com/u/12784118?v=4" width="100px;" alt=""/><br /><sub><b>李大狗</b></sub></a><br /><a href="https://github.com/SUIBE-Blockchain/FISCO_BCOS_Toolbox/commits?author=leeduckgo" title="Code">💻</a></td>
+  </tr>
+</table>
+
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->

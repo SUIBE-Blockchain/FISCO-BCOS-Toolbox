@@ -1,14 +1,25 @@
 {
   "projectName": "FISCO_BCOS_Toolbox",
-  "projectOwner": "SUIBE_Blockchain",
+  "projectOwner": "SUIBE-Blockchain",
   "repoType": "github",
-  "repoHost": "https://github.com/SUIBE-Blockchain/FISCO_BCOS_Toolbox",
+  "repoHost": "https://github.com",
   "files": [
     "README.md"
   ],
   "imageSize": 100,
   "commit": true,
   "commitConvention": "gitmoji",
-  "contributors": [],
-  "contributorsPerLine": 7
+  "contributors": [
+    {
+      "login": "leeduckgo",
+      "name": "李大狗",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/12784118?v=4",
+      "profile": "https://github.com/leeduckgo",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true
 }
