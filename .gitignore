@@ -133,3 +133,6 @@ dmypy.json
 
 
 package-lock.json
+
+# JS
+node_modules
