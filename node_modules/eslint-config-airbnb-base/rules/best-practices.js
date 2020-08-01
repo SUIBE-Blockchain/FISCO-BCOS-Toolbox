@@ -28,6 +28,11 @@ module.exports = {
     // require default case in switch statements
     'default-case': ['error', { commentPattern: '^no default$' }],
 
+    // Enforce default clauses in switch statements to be last
+    // https://eslint.org/docs/rules/default-case-last
+    // TODO: enable, semver-minor, when eslint v7 is required (which is a major)
+    'default-case-last': 'off',
+
     // https://eslint.org/docs/rules/default-param-last
     // TODO: enable, semver-minor, when eslint v6.4 is required (which is a major)
     'default-param-last': 'off',
@@ -194,6 +199,7 @@ module.exports = {
         'accumulator', // for reduce accumulators
         'e', // for e.returnvalue
         'ctx', // for Koa routing
+        'context', // for Koa routing
         'req', // for Express requests
         'request', // for Express requests
         'res', // for Express responses

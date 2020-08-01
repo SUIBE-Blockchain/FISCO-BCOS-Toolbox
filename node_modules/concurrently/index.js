@@ -19,6 +19,7 @@ module.exports = (commands, options = {}) => {
     });
 
     return concurrently(commands, {
+        maxProcesses: options.maxProcesses,
         raw: options.raw,
         successCondition: options.successCondition,
         controllers: [
@@ -30,7 +31,7 @@ module.exports = (commands, options = {}) => {
                 defaultInputTarget: options.defaultInputTarget,
                 inputStream: options.inputStream,
             }),
-            new KillOnSignal(),
+            new KillOnSignal({ process }),
             new RestartProcess({
                 logger,
                 delay: options.restartDelay,
@@ -47,6 +48,7 @@ module.exports = (commands, options = {}) => {
 // Export all flow controllers and the main concurrently function,
 // so that 3rd-parties can use them however they want
 exports.concurrently = concurrently;
+exports.Logger = Logger;
 exports.InputHandler = InputHandler;
 exports.KillOnSignal = KillOnSignal;
 exports.KillOthers = KillOthers;

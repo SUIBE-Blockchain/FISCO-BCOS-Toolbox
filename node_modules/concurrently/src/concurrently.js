@@ -31,17 +31,17 @@ module.exports = (commands, options) => {
         new ExpandNpmWildcard()
     ];
 
-    const spawnOpts = getSpawnOpts({ raw: options.raw });
-
     commands = _(commands)
         .map(mapToCommandInfo)
         .flatMap(command => parseCommand(command, commandParsers))
-        .map((command, index) => new Command(Object.assign({
-            index,
-            spawnOpts,
-            killProcess: options.kill,
-            spawn: options.spawn,
-        }, command)))
+        .map((command, index) => new Command(
+            Object.assign({
+                index,
+                spawnOpts: getSpawnOpts({ raw: options.raw, env: command.env }),
+                killProcess: options.kill,
+                spawn: options.spawn,
+            }, command)
+        ))
         .value();
 
     commands = options.controllers.reduce(
@@ -49,7 +49,12 @@ module.exports = (commands, options) => {
         commands
     );
 
-    commands.forEach(command => command.start());
+    const commandsLeft = commands.slice();
+    const maxProcesses = Math.max(1, Number(options.maxProcesses) || commandsLeft.length);
+    for (let i = 0; i < maxProcesses; i++) {
+        maybeRunMore(commandsLeft);
+    }
+
     return new CompletionListener({ successCondition: options.successCondition }).listen(commands);
 };
 
@@ -58,6 +63,7 @@ function mapToCommandInfo(command) {
         command: command.command || command,
         name: command.name || '',
         prefixColor: command.prefixColor || '',
+        env: command.env || {},
     };
 }
 
@@ -66,4 +72,16 @@ function parseCommand(command, parsers) {
         (commands, parser) => _.flatMap(commands, command => parser.parse(command)),
         _.castArray(command)
     );
+}
+
+function maybeRunMore(commandsLeft) {
+    const command = commandsLeft.shift();
+    if (!command) {
+        return;
+    }
+
+    command.start();
+    command.close.subscribe(() => {
+        maybeRunMore(commandsLeft);
+    });
 }

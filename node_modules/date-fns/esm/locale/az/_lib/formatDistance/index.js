@@ -28,6 +28,14 @@ var formatDistanceLocale = {
     one: '1 gün',
     other: '{{count}} gün'
   },
+  aboutXWeeks: {
+    one: 'təxminən 1 həftə',
+    other: 'təxminən {{count}} həftə'
+  },
+  xWeeks: {
+    one: '1 həftə',
+    other: '{{count}} həftə'
+  },
   aboutXMonths: {
     one: 'təxminən 1 ay',
     other: 'təxminən {{count}} ay'
