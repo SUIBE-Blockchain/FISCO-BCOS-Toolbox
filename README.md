@@ -1,6 +1,6 @@
 # FISCO BCOS Toolbox
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.
 
@@ -39,6 +39,7 @@ FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.
     <td align="center"><a href="https://github.com/dengcheng6502"><img src="https://avatars0.githubusercontent.com/u/30894162?v=4" width="100px;" alt=""/><br /><sub><b>Mu Li</b></sub></a><br /><a href="https://github.com/SUIBE-Blockchain/FISCO_BCOS_Toolbox/commits?author=dengcheng6502" title="Code">💻</a></td>
     <td align="center"><a href="http://cnmf.net.cn"><img src="https://avatars1.githubusercontent.com/u/42673461?v=4" width="100px;" alt=""/><br /><sub><b>肖越</b></sub></a><br /><a href="https://github.com/SUIBE-Blockchain/FISCO_BCOS_Toolbox/commits?author=xiaoyue2019" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/lekko1988"><img src="https://avatars0.githubusercontent.com/u/19570787?v=4" width="100px;" alt=""/><br /><sub><b>lekko1988</b></sub></a><br /><a href="https://github.com/SUIBE-Blockchain/FISCO_BCOS_Toolbox/commits?author=lekko1988" title="Code">💻</a></td>
+    <td align="center"><a href="http://hqwangningbo.gitee.io"><img src="https://avatars2.githubusercontent.com/u/57781136?v=4" width="100px;" alt=""/><br /><sub><b>hqwangningbo</b></sub></a><br /><a href="https://github.com/SUIBE-Blockchain/FISCO_BCOS_Toolbox/commits?author=hqwangningbo" title="Code">💻</a></td>
   </tr>
 </table>
 
