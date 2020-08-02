@@ -63,6 +63,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "whtech",
+      "name": "whtech",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/8427564?v=4",
+      "profile": "https://github.com/whtech",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
