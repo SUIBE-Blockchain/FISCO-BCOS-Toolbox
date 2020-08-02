@@ -38,6 +38,15 @@
       ]
     },
     {
+      "login": "xiaoyue2019",
+      "name": "肖越",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/42673461?v=4",
+      "profile": "http://cnmf.net.cn",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "lekko1988",
       "name": "lekko1988",
       "avatar_url": "https://avatars0.githubusercontent.com/u/19570787?v=4",
@@ -45,6 +54,7 @@
       "contributions": [
         "code"
       ]
+
     }
   ],
   "contributorsPerLine": 7,
