@@ -80,9 +80,16 @@ Once you have installed your DBMS, run the following to create your app's
 database tables and perform the initial migration
 
 ```bash
-flask db init
-flask db migrate
-flask db upgrade
+git clone https://github.com/SUIBE-Blockchain/FISCO_BCOS_Toolbox/
+
+cd FISCO_BCOS_Toolbox
+
+python manager.py init_db
+# init db
+python manager.py reset_db
+# reset db
+python manager.py set_user <username> <email> <password> <active>
+# add user
 ```
 
 ## Deployment
