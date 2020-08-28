@@ -1,9 +1,6 @@
 
 
-/*定义三级省市区数据*/
 
-
-/*关闭省市区选项*/
 function clockArea() {
 	$("#areaMask").fadeOut();
 	$("#areaLayer").animate({"right": "-100%"});
