@@ -4,7 +4,7 @@ appnope==0.1.0
 attrdict==2.0.1
 attrs==19.3.0
 backcall==0.1.0
-base58~=2.0.1
+base58==2.0.1
 bcrypt==3.1.7
 beautifulsoup4==4.9.0
 black==19.10b0
@@ -48,7 +48,7 @@ Flask-Script==2.0.6
 gevent==1.4.0
 greenlet==0.4.15
 gunicorn==20.0.4
-hexbytes~=0.2.1
+hexbytes==0.2.1
 idna==2.9
 importlib-metadata==1.6.0
 ipfshttpclient==0.4.13.2
@@ -96,7 +96,7 @@ python-dateutil==2.8.1
 python-dotenv==0.13.0
 python-editor==1.0.4
 regex==2020.4.4
-requests~=2.24.0
+requests==2.24.0
 rlp==1.2.0
 six==1.14.0
 snowballstemmer==2.0.0
