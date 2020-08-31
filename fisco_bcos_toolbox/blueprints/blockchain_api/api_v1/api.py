@@ -13,13 +13,14 @@ from flask import (
     make_response,
     jsonify
 )
+
 from fisco_bcos_toolbox.extensions import csrf_protect
 import json,os
 
 from fisco_bcos_toolbox.blockchain import Ethereum
 # from __future__ import print_function
 import random
-import string
+from fisco_bcos_toolbox.blockchain import Bitcoin
 
 api_bp = Blueprint("blockchain_api", __name__, static_folder="../static")
 now_path = 'fisco_bcos_toolbox\\blueprints\\blockchain_api\\api_v1'
@@ -36,6 +37,21 @@ def gen_addr():
         priv = payload["priv"]
     
     return json.dumps(Ethereum.generate_addr(priv))
+
+
+@api_bp.route("/generate_btcAddr", methods=["GET", "POST"])
+@csrf_protect.exempt
+def gen_btcAddr():
+    payload = trans(request.get_data(as_text=True))
+    if (payload == ""):
+        priv = request.args.get("priv")
+        if priv == None:
+            return json.dumps(Bitcoin.generate_addr())
+    else:
+        priv = payload["priv"]
+
+    return json.dumps(Bitcoin.generate_addr(priv))
+
 
 @api_bp.route("/translate_sig", methods=["GET","POST"])
 @csrf_protect.exempt
@@ -104,3 +120,4 @@ def random_int():
         'code':'200',
         'message':str(data),
     })
+

@@ -34,8 +34,21 @@
       <a class="no_type_a" target="_blank" data-tooltip="点击查看 API 文档" href="https://github.com/SUIBE-Blockchain/FISCO_BCOS_Toolbox/wiki/%E6%8E%A5%E5%8F%A3-v1.0#1-generate-address"><h3><i class="fa fa-angellist"></i>生成测试用私钥与地址</h3></a>
       <br>
       <p>
-        <a class="btn btn-outline-secondary" v-on:click="get_addr()">Generate!</a>
-        <a class="btn btn-outline-secondary" v-on:click="get_addr_by_priv(priv)">Generate by Privkey!</a>
+          <label class="control-label">选择你要生成的密钥类型：</label>
+        <br>
+          <div class="selectContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+              <select  v-model="key_type" v-on:change="change_key_type(key_type)"  name="select-key-type" class="form-control selectpicker" >
+                {% for item in key_type %}
+                  <option value={{item}}>{{item}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <br>
+        <a class="btn btn-outline-secondary" v-on:click="get_addr(key_type)">Generate!</a>
+        <a class="btn btn-outline-secondary" v-on:click="get_addr_by_priv(priv,key_type)">Generate by Privkey!</a>
         <a class="btn btn-outline-secondary" id="expressArea" href="javascript:void(0)">
           显示已生成的地址私钥
         </a>
@@ -72,6 +85,16 @@
         </div>
         <input v-model="addr" readonly="readonly" type="text" class="form-control" placeholder="Address" aria-label="Address" aria-describedby="basic-addon1">
       </div>
+
+      <div class="input-group mb-3" >
+        <div class="input-group-prepend">
+          <span class="input-group-text"  id="basic-addon1">PublicKey:</span>
+        </div>
+        <input v-model="pubv" readonly="readonly" type="text" class="form-control" placeholder="PublicKey" aria-label="PublicKey" aria-describedby="basic-addon1">
+      </div>
+
+        <a  class="btn btn-info" target="_blank" href="http://v1.8btc.com/books/261/master_bitcoin/_book/4/4.html"><i class="fa fa-book" aria-hidden="true"></i> 比特币公私钥、地址生成过程</a>
+        <a  class="btn btn-info" target="_blank" href="https://www.cnblogs.com/kumata/p/10591394.html"><i class="fa fa-book" aria-hidden="true"></i> 以太坊公私钥、地址生成过程</a>
 
 
     </div>
@@ -194,7 +217,9 @@
     data: 
     {
       priv: "",
+      pubv:"",
       addr: "",
+      key_type:"ethereum",
       mock_type: "byte32",
       mock_data: "0x7465737400000000000000000000000000000000000000000000000000000000",
       trans_type: "signature",
@@ -206,51 +231,115 @@
     },
     methods:
     {
-    get_addr:function()
-      {
+
+    change_key_type:function (key_type){
+        if (key_type == "ethereum") {
+            IsBitcoin=false
+            console.log(IsBitcoin)
+        }else{
+            IsBitcoin=true
+            console.log(IsBitcoin)
+        }
+    }   ,
+    get_addr:function(key_type) {
+        if (key_type == "ethereum") {
+
         axios(
-              {
-                  method:'get',
-                  url:'/api/v1/generate_addr',
-                  headers: {
-                      'Content-Type': 'application/x-www-form-urlencoded',
-                  }                                
-              })
-              .then(function(response){
+            {
+                method: 'get',
+                url: '/api/v1/generate_addr',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                }
+            })
+            .then(function (response) {
 
                 context.priv = response.data.payload.priv;
                 context.addr = response.data.payload.addr;
-                localStorage.setItem( context.priv,context.addr);
+                context.pubv = response.data.payload.pubv;
+                localStorage.setItem(context.priv, context.addr);
 
 
+            })
+            .catch(function (error) {
+            })
 
-              })
-              .catch(function(error){
-              })
+        }
+        else {
+            axios(
+            {
+                method: 'get',
+                url: '/api/v1/generate_btcAddr',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                }
+            })
+            .then(function (response) {
+
+                context.priv = response.data.payload.priv;
+                context.addr = response.data.payload.addr;
+                context.pubv = response.data.payload.pubv;
+                localStorage.setItem(context.priv, context.addr);
+
+
+            })
+            .catch(function (error) {
+            })
+        }
       },
-    get_addr_by_priv:function(priv)
+    get_addr_by_priv:function(priv,key_type)
     {
-        axios({
-            method:'post',
-            url:'api/v1/generate_addr',
-            data:
-            {
-                priv: priv,
-            },
-            headers:
-            {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            }                             
-        })
-        .then(function(response){
-          context.translated_data = response.data.payload.priv
-          context.addr = response.data.payload.addr
-          localStorage.setItem( context.translated_data,context.addr);
+        if(key_type=="ethereum") {
+            axios({
+                method: 'post',
+                url: 'api/v1/generate_addr',
+                data:
+                    {
+                        priv: priv,
+                    },
+                headers:
+                    {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    }
+            })
+                .then(function (response) {
+                    context.priv = response.data.payload.priv;
+                    context.addr = response.data.payload.addr;
+                    context.pubv = response.data.payload.pubv;
+                    console.log(context.pubv)
+                    localStorage.setItem(context.priv, context.addr);
 
-        })
-        .catch(function(error){
-          console.log(error)
-        })
+
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+        }
+        else{
+            axios(
+            {
+                method: 'post',
+                url: '/api/v1/generate_btcAddr',
+                data:
+                    {
+                        priv: priv,
+                    },
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                }
+            })
+            .then(function (response) {
+
+                context.priv = response.data.payload.priv;
+                context.addr = response.data.payload.addr;
+                context.pubv = response.data.payload.pubv;
+                localStorage.setItem(context.priv, context.addr);
+
+
+            })
+            .catch(function (error) {
+            })
+        }
     },
     
     get_sdk_config_w3:function(

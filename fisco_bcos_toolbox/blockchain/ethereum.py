@@ -10,12 +10,15 @@ class Ethereum:
         else:
             try:
                 account = Account.privateKeyToAccount(priv)
+
             except:
                 return {"result": "error"}
         return {"result":"success",
         "payload":
         {"addr": account.address, 
-        "priv": account.privateKey.hex()}}
+        "priv": account.privateKey.hex(),
+        "pubv": str(account._key_obj.public_key)
+         }}
     
     @staticmethod
     def split_sig(sig):
