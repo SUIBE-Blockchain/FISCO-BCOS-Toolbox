@@ -115,7 +115,7 @@ urllib3==1.25.9
 varint==1.0.2
 waitress==1.4.3
 wcwidth==0.1.9
-web3~=5.12.0
+web3==5.12.0
 WebOb==1.8.6
 websockets==8.1
 WebTest==2.0.34
