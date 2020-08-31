@@ -21,7 +21,7 @@ h4{padding: 0 10px;}
 .lastli{text-align: center;font-size: 14px;background: #eeeeee;line-height: 40px;}
 .express-area-box article { height: 100%; overflow-y: scroll; }
 .area-list li {padding: 0 15px; border-bottom: 1px solid #e2e2e2; text-align: justify; line-height: 44px}
-.express-area-box { position: fixed; left:  inherit; width: 750px;height: 100%;right: -100%;top: 0; margin-left: 0;box-shadow: 0 0 20px rgba(0,0,0,1); }
+.express-area-box { position: fixed; left:  inherit; width: 780px;height: 100%;right: -100%;top: 0; margin-left: 0;box-shadow: 0 0 20px rgba(0,0,0,1); }
 
 /*遮罩层*/
 .mask { display: none; position: fixed; top: 0; left: 0; z-index: 100; width: 100%; height: 100%; background-color: rgba(0,0,0,.5); }

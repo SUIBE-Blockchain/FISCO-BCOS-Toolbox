@@ -123,6 +123,5 @@ Werkzeug==1.0.1
 wmctrl==0.3
 WTForms==2.2.1
 zipp==3.1.0
-
-ecdsa~=0.15
-setuptools~=49.6.0
+ecdsa==0.15
+setuptools==49.6.0

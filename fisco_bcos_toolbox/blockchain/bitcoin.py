@@ -19,14 +19,9 @@ class Bitcoin:
     @staticmethod
     def generate_addr(priv=None):
         if priv == None:
-            # 生成私钥
             bits = secrets.randbits(256)
-            # 46518555179467323509970270980993648640987722172281263586388328188640792550961
             bits_hex = hex(bits)
-            # 0x66d891b5ed7f51e5044be6a7ebe4e2eae32b960f5aa0883f7cc0ce4fd6921e31
             priv = bits_hex[2:]
-            print(len(priv))
-            # 66d891b5ed7f51e5044be6a7ebe4e2eae32b960f5aa0883f7cc0ce4fd6921e31
             secret = unhexlify(priv)
             order = ecdsa.SigningKey.from_string(secret, curve=ecdsa.SECP256k1).curve.generator.order()
             p = ecdsa.SigningKey.from_string(secret, curve=ecdsa.SECP256k1).verifying_key.pubkey.point
