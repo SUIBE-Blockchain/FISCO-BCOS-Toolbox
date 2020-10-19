@@ -38,6 +38,15 @@
       <li class="nav-item">
         <a class="nav-link" href="https://wetty.cnmf.net.cn/wetty" target="_blank">多链虚拟控制台</a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">我的数字身份</a>
+        <ul class="dropdown-menu" role="menu">
+          <li class="nav-item"><a href="{{ url_for('public.sdk_config') }}">身份</a></li>
+          <li class="nav-item"><a href="{{ url_for('public.about') }}">证书</a></li>
+          <li class="nav-item"><a href="{{ url_for('public.about') }}">链上数据</a></li>
+          <li class="nav-item"><a href="{{ url_for('public.about') }}">数据共享</a></li>
+        </ul>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('public.about') }}">关于</a>
       </li>
