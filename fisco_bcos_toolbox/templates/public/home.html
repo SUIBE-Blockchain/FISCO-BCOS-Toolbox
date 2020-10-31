@@ -49,23 +49,40 @@
           <br>
         <a class="btn btn-outline-secondary" v-on:click="get_addr(key_type)">Generate!</a>
         <a class="btn btn-outline-secondary" v-on:click="get_addr_by_priv(priv,key_type)">Generate by Privkey!</a>
-        <a class="btn btn-outline-secondary" id="expressArea" href="javascript:void(0)">
+        <!-- <a class="btn btn-outline-secondary" id="expressArea" href="javascript:void(0)"> -->
+        <a class="btn btn-outline-secondary" id="expressArea" v-on:click="show_addr_and_priv()">
           显示已生成的地址私钥
         </a>
 
-      <div id="areaLayer" class="express-area-box">
+      <div id="areaLayer" class="express-area-box" ref="area_box">
       <article id="areaBox">
-        <ul class="remen" id="remen">
+        <ul class="addr_list" id="addr_list">
+          <br><br><br>
+          <div v-for="key in keys">
+          <li class="list" >
+            Privkey: ${key.priv}
+          </li>
+          <li class="list" >
+            Address: ${key.addr}
+          </li>
+          </div>
+          <li class="list" >
+            Privkey: <input type="text" v-model="priv_adding" class="form-control" placeholder="Priv" aria-label="Priv" aria-describedby="basic-addon1">
 
+          <li class="list" >
+            Address:<input type="text" v-model="addr_adding" class="form-control" placeholder="Addr" aria-label="Addr" aria-describedby="basic-addon1">
+
+          </li>
         </ul>
-        <button class="btn-danger" style="margin-left: 10%" onclick="btn_clear()">一键清除缓存数据</button>
+        <button class="btn-danger" style="margin-left: 10%" v-on:click="btn_clear()">一键清除缓存数据</button>
+        <button class="btn-info" v-on:click="btn_add_keys()">手动添加新数据</button>
         <ul id="areaList" class="area-list" style="margin-bottom: 500px;"></ul>
       </article>
       </div>
       <!--遮罩层-->
-      <div id="areaMask" class="mask"></div>
-      </p>
-
+      <transition name="fade">
+        <div id="areaMask" class="mask" ref="mask" v-on:click="close_addr_and_priv()"></div>
+      </transition>
 
 
 
@@ -90,7 +107,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text"  id="basic-addon1">PublicKey:</span>
         </div>
-        <input v-model="pubv" readonly="readonly" type="text" class="form-control" placeholder="PublicKey" aria-label="PublicKey" aria-describedby="basic-addon1">
+        <input v-model="pub" readonly="readonly" type="text" class="form-control" placeholder="PublicKey" aria-label="PublicKey" aria-describedby="basic-addon1">
       </div>
 
         <a  class="btn btn-info" target="_blank" href="http://v1.8btc.com/books/261/master_bitcoin/_book/4/4.html"><i class="fa fa-book" aria-hidden="true"></i> 比特币公私钥、地址生成过程</a>
@@ -203,22 +220,17 @@
 </div>
 
 <script>
-
-
-
-
-  function btn_clear() {
-   localStorage.clear();
-   location.reload();
-  }
-
-  var context=new Vue({
+  var context = new Vue({
     el: "#context",
+    delimiters: ['${', '}'],
     data: 
     {
+      keys:[],
       priv: "",
-      pubv:"",
+      pub:"",
       addr: "",
+      priv_adding: "",
+      addr_adding: "",
       key_type:"ethereum",
       mock_type: "byte32",
       mock_data: "0x7465737400000000000000000000000000000000000000000000000000000000",
@@ -231,7 +243,27 @@
     },
     methods:
     {
-
+    btn_add_keys: function() {
+      localStorage.setItem(context.priv_adding, context.addr_adding);
+      context.keys.push({priv: context.priv_adding,addr: context.addr_adding})
+    },
+    btn_clear: function() {
+      localStorage.clear();
+      location.reload();
+    },
+    close_addr_and_priv: function(){
+      this.$refs.area_box.style.left="inherit";
+      this.$refs.mask.style.display="none";
+    },
+    show_addr_and_priv: function (){
+      context.keys=[]
+      for(var i=0; i<localStorage.length;i++){
+        context.keys.push({"priv": localStorage.key(i), "addr": localStorage.getItem(localStorage.key(i))})
+      }
+      console.log(context.keys);
+      this.$refs.area_box.style.left="50%";
+      this.$refs.mask.style.display="inline-block";
+    },
     change_key_type:function (key_type){
         if (key_type == "ethereum") {
             IsBitcoin=false
@@ -256,7 +288,7 @@
 
                 context.priv = response.data.payload.priv;
                 context.addr = response.data.payload.addr;
-                context.pubv = response.data.payload.pubv;
+                context.pub = response.data.payload.pub;
                 localStorage.setItem(context.priv, context.addr);
 
 
@@ -278,7 +310,7 @@
 
                 context.priv = response.data.payload.priv;
                 context.addr = response.data.payload.addr;
-                context.pubv = response.data.payload.pubv;
+                context.pub = response.data.payload.pub;
                 localStorage.setItem(context.priv, context.addr);
 
 
@@ -305,8 +337,8 @@
                 .then(function (response) {
                     context.priv = response.data.payload.priv;
                     context.addr = response.data.payload.addr;
-                    context.pubv = response.data.payload.pubv;
-                    console.log(context.pubv)
+                    context.pub = response.data.payload.pub;
+                    console.log(context.pub)
                     localStorage.setItem(context.priv, context.addr);
 
 
@@ -332,7 +364,7 @@
 
                 context.priv = response.data.payload.priv;
                 context.addr = response.data.payload.addr;
-                context.pubv = response.data.payload.pubv;
+                context.pub = response.data.payload.pub;
                 localStorage.setItem(context.priv, context.addr);
 
 

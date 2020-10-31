@@ -62,7 +62,7 @@ class Bitcoin:
                 "payload":
                 {"addr": address,
                  "priv": priv,
-                 "pubv": compressed
+                 "pub": compressed
                  }}
 
 

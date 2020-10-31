@@ -17,7 +17,7 @@ class Ethereum:
         "payload":
         {"addr": account.address, 
         "priv": account.privateKey.hex(),
-        "pubv": account.address
+        "pub": account.address
          }}
     
     @staticmethod
