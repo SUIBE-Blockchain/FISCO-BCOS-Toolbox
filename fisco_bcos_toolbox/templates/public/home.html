@@ -53,6 +53,11 @@
         <a class="btn btn-outline-secondary" id="expressArea" v-on:click="show_addr_and_priv()">
           显示已生成的地址私钥
         </a>
+        <a class="btn btn-outline-secondary" id="txt_download" v-on:click="download_txt(priv, addr)">
+          下载为txt文件
+        </a>
+
+        <br><br>
 
       <div id="areaLayer" class="express-area-box" ref="area_box">
       <article id="areaBox">
@@ -65,6 +70,9 @@
           <li class="list" >
             Address: ${key.addr}
           </li>
+          <a class="btn btn-outline-secondary" id="txt_download" v-on:click="download_txt(key.priv, key.addr)">
+            下载为txt文件
+          </a>
           </div>
           <li class="list" >
             Privkey: <input type="text" v-model="priv_adding" class="form-control" placeholder="Priv" aria-label="Priv" aria-describedby="basic-addon1">
@@ -86,7 +94,7 @@
 
 
 
-
+      
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">Privkey:</span>
@@ -243,6 +251,19 @@
     },
     methods:
     {
+    heredoc: function(fn){
+      return fn.toString().slice(13,-3);
+    },
+    download_txt: function(priv, addr) {
+      var payload=context.heredoc(function(){/*{"address":"*/});
+      payload+=addr;
+      payload+=context.heredoc(function(){/*","privateKey":"*/});
+      payload+=priv.slice(2);
+      payload+=context.heredoc(function(){/*"}*/});
+
+      var blob = new Blob([payload], {type: "text/plain;charset=utf-8"});
+      saveAs(blob, addr+".txt");
+    },
     btn_add_keys: function() {
       localStorage.setItem(context.priv_adding, context.addr_adding);
       context.keys.push({priv: context.priv_adding,addr: context.addr_adding})
