@@ -5,7 +5,7 @@ a{text-decoration:none;color:inherit;outline:none;}
 
 
 
-.remen li{border-bottom: 1px solid #e2e2e2;text-align: justify;font-size: 16px;line-height: 44px; padding: 0 15px;}
+.addr_list li{border-bottom: 1px solid #e2e2e2;text-align: justify;font-size: 16px;line-height: 44px; padding: 0 15px;}
 .lastli{background: #EEEEEE;}
 /*选择地区*/
 h4{padding: 0 10px;}

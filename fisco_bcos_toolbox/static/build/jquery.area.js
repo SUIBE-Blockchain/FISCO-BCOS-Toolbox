@@ -1,29 +1,29 @@
 
 
 
-function clockArea() {
-	$("#areaMask").fadeOut();
-	$("#areaLayer").animate({"right": "-100%"});
-	$('#remen').show();
+// function clockArea() {
+// 	$("#areaMask").fadeOut();
+// 	$("#areaLayer").animate({"right": "-100%"});
+// 	$('#addr_list').show();
+// 	console.log("wtf");
 
-}
+// }
 
-$(function() {
+// $(function() {
 
-	$("#expressArea").click(function() {
-		var body="<br><br><br>";
-		for(var i=0; i<localStorage.length;i++){
-			body=body+"<li class=\"list\" >"+"Privkey: "+localStorage.key(i)+"</li>"+"<li class=\"list\" >"+"Address: "+localStorage.getItem(localStorage.key(i))+"</li>";
+// 	$("#expressArea").click(function() {
+// 		console.log("wtff")
+// 		var body="<br><br><br>";
+// 		for(var i=0; i<localStorage.length;i++){
+// 			body=body+"<li class=\"list\" >"+"Privkey: "+localStorage.key(i)+"</li>"+"<li class=\"list\" >"+"Address: "+localStorage.getItem(localStorage.key(i))+"</li>";
 
-		}
-		document.getElementById("remen").innerHTML=body;
-		$("#areaMask").fadeIn();
-		$("#areaLayer").animate({"right": 0});
-	});
+// 		}
+// 		document.getElementById("addr_list").innerHTML=body;
+// 	});
 
-	$("#areaMask, #closeArea").click(function() {
-		clockArea();
-	});
+	// $("#areaMask, #closeArea").click(function() {
+	// 	clockArea();
+	// });
 
 	
-});
+// });
