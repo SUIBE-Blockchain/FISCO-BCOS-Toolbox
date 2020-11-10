@@ -28,7 +28,7 @@ FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.
 
 ## Toolbox使用演示视频
 
-[---TODO---]
+[上贸大区块链中心打造的「开源区块链开发工具箱」如何助力WeBase](https://www.bilibili.com/video/BV1Sz4y1C7AH)
 
 ## Contributors
 
