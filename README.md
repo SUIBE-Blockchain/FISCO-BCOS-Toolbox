@@ -99,3 +99,4 @@ python3 manager.py init_db
 ```
 flask run
 ```
+默认管理员账号：admin 密码：admin
