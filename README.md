@@ -24,7 +24,7 @@ FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.
 
 环境变量文件见`.envrc`。
 
-![](https://tva1.sinaimg.cn/large/007S8ZIlly1ge8j964uioj31j10u0470.jpg)
+![](https://tva1.sinaimg.cn/large/0081Kckwgy1gkpwnwalq8j30st0mmgov.jpg)
 
 ## Toolbox使用演示视频
 
