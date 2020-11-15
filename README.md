@@ -101,4 +101,4 @@ flask run
 ```
 默认管理员账号：admin 密码：admin
 
-admin管理页：http://url/admin
+默认admin管理页：http://url/admin
