@@ -131,7 +131,7 @@ python-dateutil==2.8.1
 python-dotenv==0.13.0
 python-editor==1.0.4
 pytz==2018.3
-pyxdg==0.25
+pyxdg==0.26
 PyYAML==5.3.1
 regex==2020.4.4
 requests==2.24.0
