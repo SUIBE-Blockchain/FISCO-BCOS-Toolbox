@@ -30,7 +30,11 @@ FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.
 
 [上贸大区块链中心打造的「开源区块链开发工具箱」如何助力WeBase](https://www.bilibili.com/video/BV1Sz4y1C7AH)
 
-## 2. Contributors
+## 2. 设计理念
+
+[FISCO BCOS Toolbox 设计理念](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/articles/7_community/suibe_blockchain_center_toolbox.html)
+
+## 3. Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST: START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -53,9 +57,9 @@ FISCO BCOS Toolbox created by SUIBE-Blockchain-Team.
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-## 3. 安装指南
+## 4. 安装指南
 
-### 3.1 环境变量配置
+### 4.1 环境变量配置
 
 将如下内容写入环境变量：
 
@@ -69,7 +73,7 @@ export SEND_FILE_MAX_AGE_DEFAULT=31556926
 
 注：推荐使用[direnv](https://direnv.net/)进行环境管理。
 
-### 3.2 配置虚拟环境
+### 4.2 配置虚拟环境
 
 - 安装
 
@@ -83,19 +87,22 @@ virtualenv --no-site-packages venv
 . ./venv/bin/activate
 ```
 
-### 3.3 安装依赖包
+### 4.3 安装依赖包
 
 ```
 pip3 install -r requirements.txt
 ```
 
-### 3.4 初始化数据库
+### 4.4 初始化数据库
 
 ```
 python3 manager.py init_db
 ```
 
-### 3.5 运行！
+### 4.5 运行！
 ```
 flask run
 ```
+默认管理员账号：admin 密码：admin
+
+默认admin管理页：http://url/admin
