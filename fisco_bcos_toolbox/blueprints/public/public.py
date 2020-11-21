@@ -87,6 +87,9 @@ def login():
             flash('No account.', 'warning')
     return render_template('public/login.html', form=form)
 
+@public_bp.route("/alliance_blockchain/", methods=["GET"])
+def alliance_blockchain():
+    return render_template('public/alliance_blockchain.html')
 
 @public_bp.route("/register/", methods=["GET", "POST"])
 def register():
