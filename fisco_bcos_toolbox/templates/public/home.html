@@ -220,6 +220,18 @@
     <div class="col-lg-8">
       <h3><i class="fa fa-edit"></i> 合约案例库</h3>
       <p>The Examples of Solidity on FISCO BCOS.</p>
+      {% for contract in contracts %}
+        <b>合约集名称：</b> {{contract.name}}
+        <br><br>
+        <b>合约集描述：</b> {{contract.description}}
+        <br><hr>
+        {% for contract_name in contract.payload %}
+        <b>合约名称：</b> {{contract_name}}
+        <br><br>
+        <b>合约内容：</b>{{contract.payload[contract_name]}}
+        <br><hr>
+        {% endfor %}
+      {% endfor %}
       <p><a href="https://github.com/SUIBE-Blockchain/fisco_bcos_toolbox" class="btn btn-outline-secondary">开发中…… &raquo;</a></p>
     </div>
   </div>

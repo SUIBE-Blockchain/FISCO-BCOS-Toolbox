@@ -20,7 +20,6 @@ banner = r"""
 
 manager = Manager(app)
 
-
 def make_shell_context():
     return {
         "app": app,

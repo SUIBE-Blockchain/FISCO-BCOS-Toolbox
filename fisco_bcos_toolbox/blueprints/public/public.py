@@ -13,12 +13,13 @@ from flask_login import login_required, login_user, logout_user, current_user
 
 from fisco_bcos_toolbox.extensions import login_manager
 from fisco_bcos_toolbox.forms import RegisterForm, LoginForm
-from fisco_bcos_toolbox.models import User
+from fisco_bcos_toolbox.models import User, Contract
 from fisco_bcos_toolbox.utils import flash_errors, redirect_back
 from fisco_bcos_toolbox.extensions import db
 
-public_bp = Blueprint("public", __name__, static_folder="../static")
+import os
 
+public_bp = Blueprint("public", __name__, static_folder="../static")
 
 @public_bp.route("/", methods=["GET", "POST"])
 def home():
@@ -38,11 +39,23 @@ def home():
     mock_data_type = ["byte32", "int", "bytes"]
     key_type = ["bitcoin","ethereum"]
     trans_type = ["signature"]
+
+    contracts = Contract.query.all()
+
+    for contract in contracts:
+        # load contract by path
+        files = os.listdir(contract.path)
+        payload= {}
+        for file in files:
+            f = open(contract.path + "/" + file).read()
+            payload[file] = f
+        contract.payload = payload
     return render_template("public/home.html",
      form=form,
      mock_data_type=mock_data_type,
      trans_type=trans_type,
      key_type=key_type,
+     contracts=contracts,
      )
 
 
