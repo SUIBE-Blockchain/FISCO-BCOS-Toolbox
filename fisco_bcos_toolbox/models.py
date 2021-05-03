@@ -70,3 +70,19 @@ class User(UserMixin, SurrogatePK, Model):
     def __repr__(self):
         """Represent instance as a unique string."""
         return f"<User({self.username!r})>"
+
+class Contract(SurrogatePK, Model):
+    """contracts collection. """
+
+    __tablename__ = "contracts"
+    name = Column(db.String(80), unique=True, nullable=False)
+    description = Column(db.String(1000), unique=False, nullable=True)
+    path = Column(db.String(80), unique=False, nullable=False)
+    def __init__(self, name, description, path, **kwargs):
+        """Create instance."""
+        db.Model.__init__(self, name=name, description=description, path=path, **kwargs)
+    
+    @property
+    def __repr__(self):
+        """Represent instance as a unique string."""
+        return '<Contract %r>' % self.name

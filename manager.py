@@ -1,7 +1,7 @@
   
 from fisco_bcos_toolbox import create_app
 from fisco_bcos_toolbox.extensions import db
-from fisco_bcos_toolbox.models import User
+from fisco_bcos_toolbox.models import User, Contract
 
 from flask_script import Manager, Server, Shell
 import click
@@ -38,17 +38,8 @@ def reset_db():
     db.drop_all()
     click.echo('Drop tables.')
     db.create_all()
-    click.echo('Initialized database.')
-    admin = User(
-        username='admin',
-        email='admin@admin.com',
-        is_admin=True,
-        active=True,
-    )
-    admin.set_password('admin')
-    db.session.add(admin)
-    db.session.commit()
-    click.echo('Success Add Admin Count.')
+    
+    init_db()
 
 @manager.command
 def init_db():
@@ -64,6 +55,16 @@ def init_db():
     db.session.add(admin)
     db.session.commit()
     click.echo('Success Add Admin Count.')
+
+    contract_evi = Contract(
+        name="存证合约",
+        description = "WeBase 自带的存证合约，可用于存证、溯源、供应链等应用。",
+        path="contracts/Evidence"
+    )
+
+    db.session.add(contract_evi)
+    db.session.commit()
+    click.echo('Success Add Contract.')
 
 @manager.command
 def set_user(username, email, password, active=True):
