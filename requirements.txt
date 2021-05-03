@@ -42,7 +42,7 @@ ipython-genutils==0.2.0
 isort==4.3.21
 itsdangerous==1.1.0
 jedi==0.17.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 jsonschema==3.2.0
 lru-dict==1.1.6
 Mako==1.1.2
