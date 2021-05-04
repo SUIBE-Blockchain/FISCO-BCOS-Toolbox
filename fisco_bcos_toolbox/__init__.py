@@ -10,6 +10,8 @@ from fisco_bcos_toolbox.blueprints.user.user import user_bp
 from fisco_bcos_toolbox.blueprints.admin.admin import admin_bp
 from fisco_bcos_toolbox.blueprints.blockchain_api.api_v1.api import api_bp
 
+from fisco_bcos_toolbox.models import User, Contract
+
 from fisco_bcos_toolbox.extensions import (
     bcrypt,
     cache,
@@ -80,7 +82,7 @@ def register_shellcontext(app):
 
     def shell_context():
         """Shell context objects."""
-        return {"db": db, "User": user.models.User}
+        return {"db": db, "User": User, "Contract": Contract}
 
     app.shell_context_processor(shell_context)
 

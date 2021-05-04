@@ -88,28 +88,3 @@ class Contract(SurrogatePK, Model):
     def __repr__(self):
         """Represent instance as a unique string."""
         return '<Contract %r>' % self.name
-
-# --- for debug ---
-# from flask import Flask
-# from flask_sqlalchemy import SQLAlchemy
-
-# app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///fisco_bcos_toolbox/test.db'
-# db = SQLAlchemy(app)
-
-# class Contract(db.Model):
-#     """contracts collection. """
-#     __tablename__ = "contracts"
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(80), unique=True, nullable=False)
-#     description = db.Column(db.String(1000), unique=False, nullable=True)
-#     path = db.Column(db.String(80), unique=False, nullable=False)
-#     # def __setitem__(self, key, value):
-#     #     self.__dict__[key] = value
-
-#     # def __getitem__(self, key):
-#     #     return self.__dict__[key]
-#     def __init__(self, name, description, path, **kwargs):
-#         """Create instance."""
-#         db.Model.__init__(self, name=name, description=description, path=path, **kwargs)
-    
