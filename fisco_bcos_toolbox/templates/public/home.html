@@ -10,6 +10,8 @@
 
 
 
+        <script>hljs.initHighlightingOnLoad();</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
 
 
 
@@ -25,8 +27,7 @@
       <p><a href="https://github.com/SUIBE-Blockchain/fisco_bcos_toolbox" class="btn btn-primary btn-large">查看 Github 源码……</a></p>
     </div>
 </div><!-- /.jumbotron -->
-
-
+ 
 
 <div class="container">
   <div class="row">
@@ -227,8 +228,8 @@
         <br><hr>
         {% for contract_name in contract.payload %}
         <b>合约名称：</b> {{contract_name}}
-        <br><br>
-        <b>合约内容：</b>{{contract.payload[contract_name]}}
+        <br><br>  
+        <b>合约内容：</b> <pre><code class="JavaScript">{{contract.payload[contract_name]}}</code></pre> 
         <br><hr>
         {% endfor %}
       {% endfor %}
@@ -590,4 +591,3 @@
   })
 </script>
 {% endblock %}
-
