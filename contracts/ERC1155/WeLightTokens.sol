@@ -15,7 +15,7 @@ contract WeLightTokens is ERC1155 {
         airlineCount = 0;
     }
 
-    function addNewAirline(uint256 initialSupply, uint256 tokenID) external onlyGovernance {
+    function addNewTokens(uint256 initialSupply, uint256 tokenID) external onlyGovernance {
         airlineCount ++;
         _mint(msg.sender, tokenID, initialSupply, "");
     }
