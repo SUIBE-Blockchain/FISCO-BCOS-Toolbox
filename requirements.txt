@@ -4,7 +4,7 @@ base58==2.0.1
 bcrypt==3.2.0
 bitarray==1.2.2
 blinker==1.4
-certifi==2020.4.5.1
+certifi==2022.12.7
 cffi==1.14.0
 chardet==3.0.4
 click==7.1.2
